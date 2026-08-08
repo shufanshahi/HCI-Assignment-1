@@ -1,5 +1,6 @@
 \documentclass[sigconf,nonacm]{acmart}
 \usepackage{tabularx}
+\usepackage{placeins}
 \emergencystretch=1em
 
 % Undergraduate CHI-style assignment template adapted from main.md.
@@ -34,14 +35,26 @@
   \country{Bangladesh}}
 
 \begin{abstract}
-This report presents a complete requirements-to-conceptual-design account for
-[system or service]. It documents how the team scoped a design problem,
-gathered and analyzed evidence, established defensible requirements, and
-translated those requirements into a conceptual design. Replace bracketed text
-with a coherent account of one project; do not leave the abstract as a list of
-activities. The finished abstract should state the target users, setting,
-methods, principal findings, requirements, and design contribution in
-150--200 words.
+Existing digital journaling approaches place users between two
+unsatisfactory extremes. Blank editors preserve freedom but require the writer
+to recall, structure, and compose a reflection at once. Fixed templates
+reduce this ambiguity but can impose irrelevant questions and a rigid sequence.
+AI-assisted tools may produce polished prose, yet opaque generation can
+weaken authorship, obscure how input was transformed, and create
+privacy uncertainty. We present ReflectBlocks, a human-centered conceptual
+design that separates reflection into small, optional, and rearrangeable blocks.
+Users begin with one short thought, answer only useful prompts, customize or
+remove questions, or switch to unstructured writing. The system organizes the
+selected responses only after an explicit request, keeps the resulting entry
+fully editable, and links generated passages to their source blocks. This
+progressive structure is intended to reduce cognitive load by replacing the
+single task of planning and writing a complete entry with smaller decisions,
+externalizing the organization of ideas, and allowing users to defer unnecessary
+choices. Granular save, export, and deletion controls make the
+data lifecycle visible. Our contribution is an inspectable and reversible model
+of AI-supported journaling that combines scaffolding with user authorship,
+privacy, and control; its cognitive-load benefits remain to be empirically
+evaluated.
 \end{abstract}
 
 \keywords{human-centered design, requirements, data gathering, data analysis,
@@ -113,31 +126,16 @@ currently proposed to address it.
   \end{tabularx}
 \end{table}
 
-\begin{figure}[tb]
+\begin{figure*}[t]
   \centering
-  \fbox{\begin{minipage}{0.88\columnwidth}
-    \centering\small
-    Meaningful event or experience\\
-    $\downarrow$\\
-    One-sentence thought\\
-    $\downarrow$\\
-    Optional reflection blocks \quad or \quad blank writing\\
-    $\downarrow$\\
-    User reviews, edits, reorders, or removes material\\
-    $\downarrow$\\
-    Explicit generation request\\
-    $\downarrow$\\
-    Editable entry with source links\\
-    $\downarrow$\\
-    Save blocks / save or export entry / permanently delete
-  \end{minipage}}
+  \includegraphics[width=0.78\textwidth,trim=0 500 0 350,clip]{figure1.png}
   \caption{The bounded ReflectBlocks reflection episode. The user initiates
   each transition and may leave the flow without generating or saving an entry.}
   \Description{A vertical flow from a meaningful event through a short thought,
   optional reflection, user review, explicit generation, editing, and a final
   save, export, or deletion decision.}
   \label{fig:context}
-\end{figure}
+\end{figure*}
 
 \subsection{Research Questions and Contribution}
 
@@ -236,27 +234,19 @@ important because positioning a reflective writing tool as therapy would create
 different safety, expertise, and evaluation requirements than those supported
 by the present project.
 
-\begin{figure}[tb]
+\begin{figure*}[t]
   \centering
-  \fbox{\begin{minipage}{0.88\columnwidth}
-    \centering\small
-    Domain and privacy experts\\
-    $\downarrow$ advice and review\\[0.25em]
-    AI provider $\longleftrightarrow$ \textbf{ReflectBlocks}
-    $\longleftrightarrow$ Storage provider\\
-    $\uparrow$ processing \hfill custody $\uparrow$\\[0.25em]
-    \textbf{Writer: authors and controls the material}\\
-    $\downarrow$ optional, deliberate export\\
-    Trusted recipient
-  \end{minipage}}
-  \caption{Initial stakeholder relationships. The writer is the central data
-  subject and decision maker; technical providers and advisers influence the
-  experience without gaining an automatic right to the journal content.}
-  \Description{A stakeholder map with the writer at the center, ReflectBlocks,
-  AI and storage providers around it, advisers above, and an optional trusted
-  recipient below.}
+  \includegraphics[width=0.94\textwidth]{figure22.png}
+  \caption{ReflectBlocks stakeholder map and proposed user journey. The writer
+  remains the author, data subject, and decision maker across optional
+  reflection, AI generation, storage, export, and deletion flows.}
+  \Description{A detailed stakeholder and user-journey diagram centered on the
+  writer. It maps optional reflection blocks, blank writing, writer controls,
+  on-request AI generation, editable generated sections, storage and deletion,
+  optional export to a trusted recipient, advisers and service providers, and
+  the privacy and agency tensions that the design must address.}
   \label{fig:stakeholders}
-\end{figure}
+\end{figure*}
 
 \subsection{Current Practice and Opportunity Areas}
 
@@ -497,71 +487,139 @@ option, not just a backup.
 \end{table*}
 
 \section{Establishing Requirements}
+\label{sec:requirements}
 
 \subsection{From Findings to Requirements}
 
 Requirements state what a system and its surrounding service must enable or
 respect; they should not prematurely prescribe a screen layout
-\cite{preece2023interaction}. We translated each supported finding into a
-requirement by naming the actor, condition, action or quality, and success
-criterion. Requirements were checked with [participants, stakeholders, expert,
-or literature] through [walkthrough, prioritization activity, or review].
+\cite{preece2023interaction}. We translated each of the three themes from
+Section~\ref{sec:findings}, together with the stakeholder concerns and
+assumptions from Section~\ref{sec:discovering}, into requirements by naming
+the actor, the condition under which it applies, the action or quality
+required, and a success criterion. Because our sample was eight family and
+relative participants, all above age 45, we treated a requirement as
+supported only when at least two participants independently pointed to the
+same need, or when a single participant's account was corroborated by the
+card exercise or by a stakeholder concern already identified in
+Section~\ref{sec:discovering}. Requirements were then checked informally
+against the original transcripts and against the stakeholder table
+(Table~\ref{tab:stakeholders}) rather than through a separate participant
+workshop, which this study did not have time or budget to run; this is a
+limitation we return to in Section~\ref{sec:limitations}.
 
-Functional requirements describe supported actions. Data requirements identify
-the information needed, its source, ownership, sensitivity, and lifecycle.
-Non-functional requirements express qualities such as accessibility, privacy,
-reliability, learnability, and performance. Organizational requirements
-describe policy, staffing, integration, or governance conditions. The four
-categories can interact: an apparently simple reminder feature may create data,
-consent, and notification constraints.
+Functional requirements describe supported actions. Data requirements
+identify the information needed, its source, ownership, sensitivity, and
+lifecycle. Quality (non-functional) requirements express properties such as
+accessibility, privacy, reliability, and learnability. Organizational
+requirements describe policy, review, or governance conditions. The
+categories interact in this project: source-transparency (Theme~3) is at
+once a functional requirement (show provenance), a data requirement (which
+text is sent where), and a trust/privacy quality that the writer must be
+able to verify.
 
-\placeholderfigure{A requirements traceability diagram linking findings,
-requirement IDs, and later conceptual-design elements.}{[Replace this caption.]
-Describe the traceability diagram and why it matters.}
+\begin{figure*}[tb]
+  \centering
+  \fbox{\begin{minipage}{0.97\textwidth}
+    \small
+    \begin{tabularx}{\textwidth}{@{}l l X@{}}
+      \textbf{Theme / concern} & \textbf{Requirements} & \textbf{Traced evidence} \\
+      \midrule
+      T1: thought fades before writing & R1, R9 & 6 of 8 participants (P01, P03, P04, P07) \\
+      T2: prompts help only sometimes & R2, R3 & P02; P05 as counterexample \\
+      T3: wants to know what changed & R4, R5, R6, R12 & 7 of 8 participants (P06); P08 wants blank writing only \\
+      Data lifecycle and privacy & R7, R8, R10, R14 & Study assumptions and stakeholder analysis \\
+      Advisory oversight & R11 & Stakeholder analysis \\
+      Concept only, not yet validated & R13 & Original project concept, no participant evidence \\
+    \end{tabularx}
+  \end{minipage}}
+  \caption{Requirements traceability. Every requirement in
+  Table~\ref{tab:requirements} traces back to a theme from
+  Section~\ref{sec:findings} or a stakeholder concern from
+  Section~\ref{sec:discovering}, and one row (R13) is marked as resting on
+  the original concept alone.}
+  \Description{A table with three columns mapping each theme or concern to
+  its requirement IDs and supporting evidence.}
+  \label{fig:reqtrace}
+\end{figure*}
 
 \subsection{Prioritization and Acceptance Criteria}
 
-We prioritized requirements using [MoSCoW / value-risk matrix / stakeholder
-workshop]. A ``Must'' item is essential for the defined release or study
-scenario, not merely popular. Priority reflects evidence, consequence of
-absence, implementation dependencies, and equity impacts. For each
-high-priority requirement, specify a testable acceptance criterion: ``Given
-[condition], [user] can [action] with [measure] without [harm].''
+We prioritized requirements using MoSCoW, applied by the two researchers
+together rather than by a separate stakeholder workshop. A requirement was
+marked \textit{Must} when at least half of participants described the same
+breakdown or when omitting it would let the system act on a writer's private
+text without their knowledge (e.g., sending data or generating text without
+consent). \textit{Should} items address a real but less universal need or a
+quality concern raised by only one or two participants. \textit{Could} items
+depend on later access to expert review that this study did not yet obtain.
 
-Requirements remain provisional when evidence is thin. R[ID] is flagged for
-validation because [uncertainty]. This honest uncertainty is a useful design
-result: it directs the next study rather than disguising a decision as fact.
+For each \textit{Must} requirement we specify a testable acceptance
+criterion:
+\begin{itemize}
+  \item \textbf{R1.} Given a new one-sentence thought, a writer can save it
+  to the app in under 5 seconds, without first selecting a prompt, block, or
+  template.
+  \item \textbf{R4.} Given a set of filled or partially filled blocks, no
+  organized draft is produced until the writer makes a separate, explicit
+  generation request, even after closing and reopening the app.
+  \item \textbf{R7.} Given a generation request, the AI provider receives
+  only the blocks the writer selected for that request, never the writer's
+  other saved blocks or past entries.
+  \item \textbf{R8.} Given a saved block or a generated entry, a writer can
+  delete it independently of other saved material and receive confirmation
+  that the deletion is permanent.
+  \item \textbf{R12.} Given a freshly generated entry, a writer can change,
+  delete, or add any sentence, and the edited version, not the original
+  generated output, is what gets saved or exported.
+\end{itemize}
+
+Three requirements remain provisional. \textbf{R3} is flagged for validation
+because it rests on a single counterexample (P05) against the majority
+pattern in Theme~2, so we do not yet know how common a fixed-prompt
+preference is. \textbf{R9} is flagged because our entire sample was recruited
+from family and relatives above age 45; the accessibility need it describes
+may not generalize to younger or more technically experienced writers, and
+could equally understate needs we did not observe in this sample.
+\textbf{R13} is the weakest-evidenced requirement in the catalogue: block
+customization (editing a block's question, adding a custom block, reordering
+blocks) appears in the original ReflectBlocks concept in Section~1, but no
+participant raised it unprompted, and our interview guide and card exercise
+did not ask about it directly. We kept it as a low-priority, explicitly
+unvalidated entry rather than dropping it, so the gap is visible instead of
+silently resolved. All three are carried forward as open questions for the
+evaluation plan in Section~\ref{sec:evaluation} rather than treated as
+settled.
 
 \begin{table*}[tb]
-  \caption{Requirements catalogue. Add rows; retain stable IDs for traceability.}
+  \caption{Requirements catalogue for ReflectBlocks.}
   \label{tab:requirements}
+  \small
   \begin{tabularx}{\textwidth}{@{}l l X X l@{}}
     \toprule
     ID & Type & Requirement & Evidence / rationale & Priority \\
     \midrule
-    R1 & Functional & The system shall enable [role] to [action] when [condition]. & Theme T[ID]; P[ID] & Must \\
-    R2 & Data & The system shall collect/display [data] only for [purpose] and [retention rule]. & Constraint [ID] & Must \\
-    R3 & Quality & A [user with access need] shall complete [task] using [support/criterion]. & Observation [ID] & Should \\
-    R4 & Organizational & [Responsible role] shall be able to [govern/support action]. & Stakeholder review & Could \\
+    R1 & Functional & The system shall let a writer save a one-sentence thought within seconds of opening the app, without first choosing a prompt or block. & T1; P01, P03, P04, P07 (6/8) & Must \\
+    R2 & Functional & The system shall let a writer dismiss any single prompt block with one action, without opening a settings screen. & T2; P02 & Must \\
+    R3 & Functional & The system shall let a writer set a personal default prompt behavior (e.g., always show the same fixed prompts) that persists across sessions. & T2 (counterexample); P05 & Should \\
+    R4 & Functional & The system shall generate an organized draft entry only after an explicit, separate request from the writer, never automatically once blocks are filled. & Assumption 3; T3; P08 & Must \\
+    R5 & Functional & The system shall let a writer view which words or passages in a generated entry came from their own blocks versus system-organized language. & T3; P06 (7/8) & Must \\
+    R6 & Functional & The system shall let a writer complete, save, and export an entry using blank writing alone, without ever invoking generation. & T3; P08 & Should \\
+    R7 & Data & The system shall send an AI provider only the specific blocks the writer selects for a given generation request, not the writer's other saved blocks or entries. & Assumption 5; Table~\ref{tab:stakeholders} (AI provider) & Must \\
+    R8 & Data & The system shall let a writer permanently delete saved blocks and a generated entry independently of one another, with deletion irreversible once confirmed. & Assumption 5; Table~\ref{tab:stakeholders} (writer vs.\ provider retention) & Must \\
+    R9 & Quality & A writer with limited experience using text-editing apps shall be able to capture and save a first thought using only tap-and-type actions, without learning a new gesture or menu. & Participant sample (8/8 aged 45+) & Should \\
+    R10 & Data & Before any generation request is sent, the system shall show in plain language what data will leave the device, to whom, and why. & Opportunity area 3 (\S\ref{sec:discovering}); Assumption 5 & Should \\
+    R11 & Organizational & A privacy or domain expert shall review prompt wording before release to flag clinical-sounding or otherwise harmful phrasing. & Table~\ref{tab:stakeholders} (domain/privacy expert) & Could \\
+    R12 & Functional & The system shall keep every sentence of a generated entry editable, letting the writer change, remove, or add text after generation and before saving. & Assumption 3; T3; P06 & Must \\
+    R13 & Functional & The system shall let a writer edit a block's question text, add a custom block, and reorder blocks before requesting generation. & Initial concept (\S1); not yet directly evidenced in interviews & Could \\
+    R14 & Data & The system shall let a writer independently choose to save only the original blocks, save the complete generated entry, export the entry, or save nothing at all. & Assumption 5; Opportunity area 3 (\S\ref{sec:discovering}); Table~\ref{tab:stakeholders} (retention conflict) & Should \\
+    
     \bottomrule
   \end{tabularx}
 \end{table*}
 
-\guidance{Use active, testable wording: ``The system shall enable [role] to
-\ldots'' or ``[Role] needs to \ldots when \ldots''. Include the rationale and
-evidence ID beside every important requirement. Do not invent requirements
-merely to fill categories.}
+\FloatBarrier
 
-\instructornote{Assess requirement quality, not quantity. A good table supports
-later design decisions, identifies trade-offs, and makes it possible to
-challenge an unsupported item.}
-
-\expectedlength{2.5--3 pages, including a requirements table with at least
-8--12 substantive entries.}
-\commonmistakes{Writing features instead of needs; using vague terms such as
-``easy'' without a criterion; prioritizing by personal preference; omitting
-privacy and accessibility; presenting all requirements as equally important;
-failing to trace requirements to evidence.}
 
 \section{Conceptual Design}
 
@@ -634,6 +692,7 @@ persona without linking it to study evidence; failing to explain why an
 interaction style fits the context.}
 
 \section{Evaluation Plan}
+\label{sec:evaluation}
 
 \subsection{Evaluation Questions and Methods}
 
@@ -718,6 +777,7 @@ universal user needs.
 \end{table}
 
 \subsection{Limitations and Next Steps}
+\label{sec:limitations}
 
 The study is limited by [sample, setting, duration, access, method, or
 researcher-position limitation]. Consequently, findings should be interpreted

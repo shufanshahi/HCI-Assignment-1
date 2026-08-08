@@ -35,14 +35,26 @@
   \country{Bangladesh}}
 
 \begin{abstract}
-This report presents a complete requirements-to-conceptual-design account for
-[system or service]. It documents how the team scoped a design problem,
-gathered and analyzed evidence, established defensible requirements, and
-translated those requirements into a conceptual design. Replace bracketed text
-with a coherent account of one project; do not leave the abstract as a list of
-activities. The finished abstract should state the target users, setting,
-methods, principal findings, requirements, and design contribution in
-150--200 words.
+Existing digital journaling approaches place users between two
+unsatisfactory extremes. Blank editors preserve freedom but require the writer
+to recall, structure, and compose a reflection at once. Fixed templates
+reduce this ambiguity but can impose irrelevant questions and a rigid sequence.
+AI-assisted tools may produce polished prose, yet opaque generation can
+weaken authorship, obscure how input was transformed, and create
+privacy uncertainty. We present ReflectBlocks, a human-centered conceptual
+design that separates reflection into small, optional, and rearrangeable blocks.
+Users begin with one short thought, answer only useful prompts, customize or
+remove questions, or switch to unstructured writing. The system organizes the
+selected responses only after an explicit request, keeps the resulting entry
+fully editable, and links generated passages to their source blocks. This
+progressive structure is intended to reduce cognitive load by replacing the
+single task of planning and writing a complete entry with smaller decisions,
+externalizing the organization of ideas, and allowing users to defer unnecessary
+choices. Granular save, export, and deletion controls make the
+data lifecycle visible. Our contribution is an inspectable and reversible model
+of AI-supported journaling that combines scaffolding with user authorship,
+privacy, and control; its cognitive-load benefits remain to be empirically
+evaluated.
 \end{abstract}
 
 \keywords{human-centered design, requirements, data gathering, data analysis,
@@ -114,31 +126,16 @@ currently proposed to address it.
   \end{tabularx}
 \end{table}
 
-\begin{figure}[tb]
+\begin{figure*}[t]
   \centering
-  \fbox{\begin{minipage}{0.88\columnwidth}
-    \centering\small
-    Meaningful event or experience\\
-    $\downarrow$\\
-    One-sentence thought\\
-    $\downarrow$\\
-    Optional reflection blocks \quad or \quad blank writing\\
-    $\downarrow$\\
-    User reviews, edits, reorders, or removes material\\
-    $\downarrow$\\
-    Explicit generation request\\
-    $\downarrow$\\
-    Editable entry with source links\\
-    $\downarrow$\\
-    Save blocks / save or export entry / permanently delete
-  \end{minipage}}
+  \includegraphics[width=0.78\textwidth,trim=0 500 0 350,clip]{figure1.png}
   \caption{The bounded ReflectBlocks reflection episode. The user initiates
   each transition and may leave the flow without generating or saving an entry.}
   \Description{A vertical flow from a meaningful event through a short thought,
   optional reflection, user review, explicit generation, editing, and a final
   save, export, or deletion decision.}
   \label{fig:context}
-\end{figure}
+\end{figure*}
 
 \subsection{Research Questions and Contribution}
 
@@ -237,27 +234,19 @@ important because positioning a reflective writing tool as therapy would create
 different safety, expertise, and evaluation requirements than those supported
 by the present project.
 
-\begin{figure}[tb]
+\begin{figure*}[t]
   \centering
-  \fbox{\begin{minipage}{0.88\columnwidth}
-    \centering\small
-    Domain and privacy experts\\
-    $\downarrow$ advice and review\\[0.25em]
-    AI provider $\longleftrightarrow$ \textbf{ReflectBlocks}
-    $\longleftrightarrow$ Storage provider\\
-    $\uparrow$ processing \hfill custody $\uparrow$\\[0.25em]
-    \textbf{Writer: authors and controls the material}\\
-    $\downarrow$ optional, deliberate export\\
-    Trusted recipient
-  \end{minipage}}
-  \caption{Initial stakeholder relationships. The writer is the central data
-  subject and decision maker; technical providers and advisers influence the
-  experience without gaining an automatic right to the journal content.}
-  \Description{A stakeholder map with the writer at the center, ReflectBlocks,
-  AI and storage providers around it, advisers above, and an optional trusted
-  recipient below.}
+  \includegraphics[width=0.94\textwidth]{figure22.png}
+  \caption{ReflectBlocks stakeholder map and proposed user journey. The writer
+  remains the author, data subject, and decision maker across optional
+  reflection, AI generation, storage, export, and deletion flows.}
+  \Description{A detailed stakeholder and user-journey diagram centered on the
+  writer. It maps optional reflection blocks, blank writing, writer controls,
+  on-request AI generation, editable generated sections, storage and deletion,
+  optional export to a trusted recipient, advisers and service providers, and
+  the privacy and agency tensions that the design must address.}
   \label{fig:stakeholders}
-\end{figure}
+\end{figure*}
 
 \subsection{Current Practice and Opportunity Areas}
 

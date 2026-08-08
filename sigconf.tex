@@ -1,852 +1,664 @@
-%%
-%% This is file `sigconf.tex',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% samples.dtx  (with options: `all,proceedings,sigconf')
-%% 
-%% IMPORTANT NOTICE:
-%% 
-%% For the copyright see the source file.
-%% 
-%% Any modified versions of this file must be renamed
-%% with new filenames distinct from sigconf.tex.
-%% 
-%% For distribution of the original source see the terms
-%% for copying and modification in the file samples.dtx.
-%% 
-%% This generated file may be distributed as long as the
-%% original source files, as listed above, are part of the
-%% same distribution. (The sources need not necessarily be
-%% in the same archive or directory.)
-%%
-%%
-%% Commands for TeXCount
-%TC:macro \cite [option:text,text]
-%TC:macro \citep [option:text,text]
-%TC:macro \citet [option:text,text]
-%TC:envir table 0 1
-%TC:envir table* 0 1
-%TC:envir tabular [ignore] word
-%TC:envir displaymath 0 word
-%TC:envir math 0 word
-%TC:envir comment 0 0
-%%
-%% The first command in your LaTeX source must be the \documentclass
-%% command.
-%%
-%% For submission and review of your manuscript please change the
-%% command to \documentclass[manuscript, screen, review]{acmart}.
-%%
-%% When submitting camera ready or to TAPS, please change the command
-%% to \documentclass[sigconf]{acmart} or whichever template is required
-%% for your publication.
-%%
-%%
-\documentclass[sigconf]{acmart}
-%%
-%% \BibTeX command to typeset BibTeX logo in the docs
-\AtBeginDocument{%
-  \providecommand\BibTeX{{%
-    Bib\TeX}}}
+\documentclass[sigconf,nonacm]{acmart}
+\usepackage{tabularx}
+\emergencystretch=1em
 
-%% Rights management information.  This information is sent to you
-%% when you complete the rights form.  These commands have SAMPLE
-%% values in them; it is your responsibility as an author to replace
-%% the commands and values with those provided to you when you
-%% complete the rights form.
-\setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
-%% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-  conference title from your rights confirmation email}{June 03--05,
-  2018}{Woodstock, NY}
-%%
-%%  Uncomment \acmBooktitle if the title of the proceedings is different
-%%  from ``Proceedings of ...''!
-%%
-%%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
-%%  June 03--05, 2018, Woodstock, NY}
-\acmISBN{978-1-4503-XXXX-X/2018/06}
+% Undergraduate CHI-style assignment template adapted from main.md.
+% Replace every bracketed placeholder before submission.
+\setcopyright{none}
+\settopmatter{printacmref=false,printfolios=true}
+\renewcommand\footnotetextcopyrightpermission[1]{}
 
+\newcommand{\placeholderfigure}[2]{%
+  \begin{figure}[tb]
+    \centering
+    \fbox{\parbox[c][1.15in][c]{0.88\columnwidth}{\centering\small #1\\[0.5em]
+    \textit{Replace with a legible, original study artifact.}}}
+    \caption{#2}
+    \Description{Placeholder for an original, de-identified study artifact.}
+  \end{figure}}
 
-%%
-%% Submission ID.
-%% Use this when submitting an article to a sponsored event. You'll
-%% receive a unique submission ID from the organizers
-%% of the event, and this ID should be used as the parameter to this command.
-%%\acmSubmissionID{123-A56-BU3}
+\newcommand{\guidance}[1]{\paragraph{Writing guidance.} \textit{#1}}
+\newcommand{\instructornote}[1]{\paragraph{Instructor note.} \textit{#1}}
+\newcommand{\commonmistakes}[1]{\paragraph{Common mistakes.} \textit{#1}}
+\newcommand{\expectedlength}[1]{\paragraph{Expected length.} \textit{#1}}
 
-%%
-%% For managing citations, it is recommended to use bibliography
-%% files in BibTeX format.
-%%
-%% You can then either use BibTeX with the ACM-Reference-Format style,
-%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
-%% support for advanced citation of software artefact from the
-%% biblatex-software package, also separately available on CTAN.
-%%
-%% Look at the sample-*-biblatex.tex files for templates showcasing
-%% the biblatex styles.
-%%
-%%
-%% The majority of ACM publications use numbered citations and
-%% references.  The command \citestyle{authoryear} switches to the
-%% "author year" style.
-%%
-%% If you are preparing content for an event
-%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
-%% citations and references.
-%% Uncommenting
-%% the next command will enable that style.
-%%\citestyle{acmauthoryear}
-
-
-%%
-%% end of the preamble, start of the body of the document source.
 \begin{document}
 
-%%
-%% The "title" command has an optional parameter,
-%% allowing the author to define a "short title" to be used in page headers.
-\title{The Name of the Title Is Hope}
+\title{Discovering, Establishing, and Designing for Requirements: An HCI Case Study}
+\subtitle{Undergraduate CHI-Style Assignment Template}
 
-%%
-%% The "author" command and its associated commands are used to define
-%% the authors and their affiliations.
-%% Of note is the shared affiliation of the first two authors, and the
-%% "authornote" and "authornotemark" commands
-%% used to denote shared contribution to the research.
-\author{Ben Trovato}
-\authornote{Both authors contributed equally to this research.}
-\email{trovato@corporation.com}
-\orcid{1234-5678-9012}
-\author{G.K.M. Tobin}
-\correspondingauthor
-\authornotemark[1]
-\email{webmaster@marysville-ohio.com}
+\author{Anonymous Author(s)}
 \affiliation{%
-  \institution{Institute for Clarity in Documentation}
-  \city{Dublin}
-  \state{Ohio}
-  \country{USA}
-}
+  \institution{Anonymous Institution}
+  \city{Dhaka}
+  \country{Bangladesh}}
 
-\author{Lars Th{\o}rv{\"a}ld}
-\affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \city{Hekla}
-  \country{Iceland}}
-\email{larst@affiliation.org}
-
-\author{Valerie B\'eranger}
-\affiliation{%
-  \institution{Inria Paris-Rocquencourt}
-  \city{Rocquencourt}
-  \country{France}
-}
-
-\author{Aparna Patel}
-\affiliation{%
- \institution{Rajiv Gandhi University}
- \city{Doimukh}
- \state{Arunachal Pradesh}
- \country{India}}
-
-\author{Huifen Chan}
-\affiliation{%
-  \institution{Tsinghua University}
-  \city{Haidian Qu}
-  \state{Beijing Shi}
-  \country{China}}
-
-\author{Charles Palmer}
-\affiliation{%
-  \institution{Palmer Research Laboratories}
-  \city{San Antonio}
-  \state{Texas}
-  \country{USA}}
-\email{cpalmer@prl.com}
-
-\author{John Smith}
-\affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \city{Hekla}
-  \country{Iceland}}
-\email{jsmith@affiliation.org}
-
-\author{Julius P. Kumquat}
-\correspondingauthor
-\affiliation{%
-  \institution{The Kumquat Consortium}
-  \city{New York}
-  \country{USA}}
-\email{jpkumquat@consortium.net}
-
-%%
-%% By default, the full list of authors will be used in the page
-%% headers. Often, this list is too long, and will overlap
-%% other information printed in the page headers. This command allows
-%% the author to define a more concise list
-%% of authors' names for this purpose.
-\renewcommand{\shortauthors}{Trovato et al.}
-
-%%
-%% The abstract is a short summary of the work to be presented in the
-%% article.
 \begin{abstract}
-  A clear and well-documented \LaTeX\ document is presented as an
-  article formatted for publication by ACM in a conference proceedings
-  or journal publication. Based on the ``acmart'' document class, this
-  article presents and explains many of the common variations, as well
-  as many of the formatting elements an author may use in the
-  preparation of the documentation of their work.
+This report presents a complete requirements-to-conceptual-design account for
+[system or service]. It documents how the team scoped a design problem,
+gathered and analyzed evidence, established defensible requirements, and
+translated those requirements into a conceptual design. Replace bracketed text
+with a coherent account of one project; do not leave the abstract as a list of
+activities. The finished abstract should state the target users, setting,
+methods, principal findings, requirements, and design contribution in
+150--200 words.
 \end{abstract}
 
-%%
-%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
-%% Please copy and paste the code instead of the example below.
-%%
-\begin{CCSXML}
-<ccs2012>
- <concept>
-  <concept_id>00000000.0000000.0000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>500</concept_significance>
- </concept>
- <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>300</concept_significance>
- </concept>
- <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>100</concept_significance>
- </concept>
- <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>100</concept_significance>
- </concept>
-</ccs2012>
-\end{CCSXML}
+\keywords{human-centered design, requirements, data gathering, data analysis,
+conceptual design, HCI education}
 
-\ccsdesc[500]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc[300]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc[100]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
-\keywords{Do, Not, Use, This, Code, Put, the, Correct, Terms, for,
-  Your, Paper}
-%% A "teaser" image appears between the author and affiliation
-%% information and the body of the document, and typically spans the
-%% page.
-\begin{teaserfigure}
- \includegraphics[width=\textwidth]{sampleteaser}
-  \caption{Seattle Mariners at Spring Training, 2010.}
-  \Description{Enjoying the baseball game from the third-base
-  seats. Ichiro Suzuki preparing to bat.}
-  \label{fig:teaser}
-\end{teaserfigure}
-
-\received{20 February 2007}
-\received[revised]{12 March 2009}
-\received[accepted]{5 June 2009}
-
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
 \maketitle
 
-
 \section{Introduction}
-ACM's consolidated article template, introduced in 2017, provides a
-consistent \LaTeX\ style for use across ACM publications, and
-incorporates accessibility and metadata-extraction functionality
-necessary for future Digital Library endeavors. Numerous ACM and
-SIG-specific \LaTeX\ templates have been examined, and their unique
-features incorporated into this single new template.
 
-If you are new to publishing with ACM, this document is a valuable
-guide to the process of preparing your work for publication. If you
-have published with ACM before, this document provides insight and
-instruction into more recent changes to the article template.
+\subsection{Problem, Users, and Setting}
 
-The ``\verb|acmart|'' document class can be used to prepare articles
-for any ACM publication --- conference or journal, and for any stage
-of publication, from review to final ``camera-ready'' copy, to the
-author's own version, with {\itshape very} few changes to the source.
+[Name the setting] currently requires [primary users] to [goal], but this is
+difficult because [observed or evidenced breakdown]. This project investigates
+how an interactive system could support [bounded outcome] without assuming
+that a new application is automatically the right answer. The unit of analysis
+is [individual / team / service encounter], and the study concerns [location,
+frequency, constraints, and stakeholders]. State what is known from preliminary
+observation, prior research, or institutional context; clearly label conjecture
+as conjecture.
 
-\section{Template Overview}
-As noted in the introduction, the ``\verb|acmart|'' document class can
-be used to prepare many different kinds of documentation --- a
-double-anonymous initial submission of a full-length technical paper, a
-two-page SIGGRAPH Emerging Technologies abstract, a ``camera-ready''
-journal article, a SIGCHI Extended Abstract, and more --- all by
-selecting the appropriate {\itshape template style} and {\itshape
-  template parameters}.
+The project is grounded in a human-centered process: discover the problem
+space, gather evidence about people and practice, interpret that evidence,
+negotiate requirements, and develop a conceptual design
+\cite{preece2023interaction}. This sequence is iterative, not a claim that
+requirements become permanently fixed after one study.
 
-This document will explain the major features of the document
-class. For further information, the {\itshape \LaTeX\ User's Guide} is
-available from
-\url{https://www.acm.org/publications/proceedings-template}.
-
-\subsection{Template Styles}
-
-The primary parameter given to the ``\verb|acmart|'' document class is
-the {\itshape template style} which corresponds to the kind of publication
-or SIG publishing the work. This parameter is enclosed in square
-brackets and is a part of the {\verb|documentclass|} command:
-\begin{verbatim}
-  \documentclass[STYLE]{acmart}
-\end{verbatim}
-
-Journals use one of three template styles. All but three ACM journals
-use the {\verb|acmsmall|} template style:
-\begin{itemize}
-\item {\texttt{acmsmall}}: The default journal template style.
-\item {\texttt{acmlarge}}: Used by JOCCH and TAP.
-\item {\texttt{acmtog}}: Used by TOG.
-\end{itemize}
-
-The majority of conference proceedings documentation will use the {\verb|acmconf|} template style.
-\begin{itemize}
-\item {\texttt{sigconf}}: The default proceedings template style.
-\item{\texttt{sigchi}}: Used for SIGCHI conference articles.
-\item{\texttt{sigplan}}: Used for SIGPLAN conference articles.
-\end{itemize}
-
-\subsection{Template Parameters}
-
-In addition to specifying the {\itshape template style} to be used in
-formatting your work, there are a number of {\itshape template parameters}
-which modify some part of the applied template style. A complete list
-of these parameters can be found in the {\itshape \LaTeX\ User's Guide.}
-
-Frequently-used parameters, or combinations of parameters, include:
-\begin{itemize}
-\item {\texttt{anonymous,review}}: Suitable for a ``double-anonymous''
-  conference submission. Anonymizes the work and includes line
-  numbers. Use with the \texttt{\string\acmSubmissionID} command to print the
-  submission's unique ID on each page of the work.
-\item{\texttt{authorversion}}: Produces a version of the work suitable
-  for posting by the author.
-\item{\texttt{screen}}: Produces colored hyperlinks.
-\end{itemize}
-
-This document uses the following string as the first command in the
-source file:
-\begin{verbatim}
-\documentclass[sigconf]{acmart}
-\end{verbatim}
-
-\section{Modifications}
-
-Modifying the template --- including but not limited to: adjusting
-margins, typeface sizes, line spacing, paragraph and list definitions,
-and the use of the \verb|\vspace| command to manually adjust the
-vertical spacing between elements of your work --- is not allowed.
-
-{\bfseries Your document will be returned to you for revision if
-  modifications are discovered.}
-
-\section{Typefaces}
-
-The ``\verb|acmart|'' document class requires the use of the
-``Libertine'' typeface family. Your \TeX\ installation should include
-this set of packages. Please do not substitute other typefaces. The
-``\verb|lmodern|'' and ``\verb|ltimes|'' packages should not be used,
-as they will override the built-in typeface families.
-
-\section{Title Information}
-
-The title of your work should use capital letters appropriately -
-\url{https://capitalizemytitle.com/} has useful rules for
-capitalization. Use the {\verb|title|} command to define the title of
-your work. If your work has a subtitle, define it with the
-{\verb|subtitle|} command.  Do not insert line breaks in your title.
-
-If your title is lengthy, you must define a short version to be used
-in the page headers, to prevent overlapping text. The \verb|title|
-command has a ``short title'' parameter:
-\begin{verbatim}
-  \title[short title]{full title}
-\end{verbatim}
-
-\section{Authors and Affiliations}
-
-Each author must be defined separately for accurate metadata
-identification.  As an exception, multiple authors may share one
-affiliation. Authors' names should not be abbreviated; use full first
-names wherever possible. Include authors' e-mail addresses whenever
-possible.
-
-Grouping authors' names or e-mail addresses, or providing an ``e-mail
-alias,'' as shown below, is not acceptable:
-\begin{verbatim}
-  \author{Brooke Aster, David Mehldau}
-  \email{dave,judy,steve@university.edu}
-  \email{firstname.lastname@phillips.org}
-\end{verbatim}
-
-The \verb|authornote| and \verb|authornotemark| commands allow a note
-to apply to multiple authors --- for example, if the first two authors
-of an article contributed equally to the work.
-
-If your author list is lengthy, you must define a shortened version of
-the list of authors to be used in the page headers, to prevent
-overlapping text. The following command should be placed just after
-the last \verb|\author{}| definition:
-\begin{verbatim}
-  \renewcommand{\shortauthors}{McCartney, et al.}
-\end{verbatim}
-Omitting this command will force the use of a concatenated list of all
-of the authors' names, which may result in overlapping text in the
-page headers.
-
-The article template's documentation, available at
-\url{https://www.acm.org/publications/proceedings-template}, has a
-complete explanation of these commands and tips for their effective
-use.
-
-Note that authors' addresses are mandatory for journal articles.
-
-\section{Rights Information}
-
-Authors of any work published by ACM will need to complete a rights
-form. Depending on the kind of work, and the rights management choice
-made by the author, this may be copyright transfer, permission,
-license, or an OA (open access) agreement.
-
-Regardless of the rights management choice, the author will receive a
-copy of the completed rights form once it has been submitted. This
-form contains \LaTeX\ commands that must be copied into the source
-document. When the document source is compiled, these commands and
-their parameters add formatted text to several areas of the final
-document:
-\begin{itemize}
-\item the ``ACM Reference Format'' text on the first page.
-\item the ``rights management'' text on the first page.
-\item the conference information in the page header(s).
-\end{itemize}
-
-Rights information is unique to the work; if you are preparing several
-works for an event, make sure to use the correct set of commands with
-each of the works.
-
-The ACM Reference Format text is required for all articles over one
-page in length, and is optional for one-page articles (abstracts).
-
-\section{CCS Concepts and User-Defined Keywords}
-
-Two elements of the ``acmart'' document class provide powerful
-taxonomic tools for you to help readers find your work in an online
-search.
-
-The ACM Computing Classification System ---
-\url{https://www.acm.org/publications/class-2012} --- is a set of
-classifiers and concepts that describe the computing
-discipline. Authors can select entries from this classification
-system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
-commands to be included in the \LaTeX\ source.
-
-User-defined keywords are a comma-separated list of words and phrases
-of the authors' choosing, providing a more flexible way of describing
-the research being presented.
-
-CCS concepts and user-defined keywords are required for for all
-articles over two pages in length, and are optional for one- and
-two-page articles (or abstracts).
-
-\section{Sectioning Commands}
-
-Your work should use standard \LaTeX\ sectioning commands:
-\verb|\section|, \verb|\subsection|, \verb|\subsubsection|,
-\verb|\paragraph|, and \verb|\subparagraph|. The sectioning levels up to
-\verb|\subsubsection| should be numbered; do not remove the numbering
-from the commands.
-
-Simulating a sectioning command by setting the first word or words of
-a paragraph in boldface or italicized text is {\bfseries not allowed.}
-
-Below are examples of sectioning commands.
-
-\subsection{Subsection}
-\label{sec:subsection}
-
-This is a subsection.
-
-\subsubsection{Subsubsection}
-\label{sec:subsubsection}
-
-This is a subsubsection.
-
-\paragraph{Paragraph}
-
-This is a paragraph.
-
-\subparagraph{Subparagraph}
-
-This is a subparagraph.
-
-\section{Tables}
-
-The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
-package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
-high-quality tables.
-
-Table captions are placed {\itshape above} the table.
-
-Because tables cannot be split across pages, the best placement for
-them is typically the top of the page nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and the
-table caption.  The contents of the table itself must go in the
-\textbf{tabular} environment, to be aligned properly in rows and
-columns, with the desired horizontal and vertical rules.  Again,
-detailed instructions on \textbf{tabular} material are found in the
-\textit{\LaTeX\ User's Guide}.
-
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed output of
-this document.
-
-\begin{table}
-  \caption{Frequency of Special Characters}
-  \label{tab:freq}
-  \begin{tabular}{ccl}
+\begin{table}[tb]
+  \caption{Project scope. Replace all bracketed entries.}
+  \label{tab:scope}
+  \begin{tabularx}{\columnwidth}{@{}lX@{}}
     \toprule
-    Non-English or Math&Frequency&Comments\\
+    Element & Project decision \\
     \midrule
-    \O & 1 in 1,000& For Swedish names\\
-    $\pi$ & 1 in 5& Common in math\\
-    \$ & 4 in 5 & Used in business\\
-    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-  \bottomrule
-\end{tabular}
+    Primary users & [Who directly uses or is affected by the system?] \\
+    Stakeholders & [Who administers, supports, regulates, or is indirectly affected?] \\
+    Activity & [Observable task or practice under study] \\
+    Setting & [Physical, social, organizational, and technical context] \\
+    Boundary & [What is intentionally outside this assignment?] \\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more
-desirable. Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
+\placeholderfigure{A context photograph, service-blueprint excerpt, or
+stakeholder map for [setting]. Remove identifying information.}{[Replace this
+caption.] Describe what the figure shows and why it matters.}
 
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
+\guidance{Write in the past tense for completed study work and present tense
+for stable context. Give one concrete example of the existing workflow.
+Replace every bracketed placeholder, and cite sources for contextual claims.}
+
+\instructornote{Assess scope discipline: a strong introduction identifies a
+feasible population and activity, distinguishes stakeholders, and makes a
+testable design opportunity visible.}
+
+\subsection{Research Questions and Contribution}
+
+The study asks: \textbf{RQ1:} How do [users] currently accomplish [goal]?
+\textbf{RQ2:} Which needs, constraints, and opportunities should shape a future
+design? \textbf{RQ3:} How can a conceptual design make the proposed interaction
+understandable and accountable? The contribution is a documented,
+evidence-traceable requirements set and concept for [system], not merely a
+polished interface.
+
+\expectedlength{1.5--2 pages, including the context figure and Table~\ref{tab:scope}.}
+\commonmistakes{Opening with a solution; treating all people as ``the user'';
+claiming needs without evidence; using research questions that can be answered
+only by opinions about the proposed interface.}
+
+\section{Discovering Requirements}
+
+\subsection{Stakeholders, Assumptions, and Problem Space}
+
+Requirements discovery identifies the people, activities, values, and
+constraints that define a design space \cite{preece2023interaction}. We began
+with a stakeholder inventory. Primary participants were [group]; secondary
+stakeholders included [group]; and gatekeepers or domain experts included
+[group]. Their interests were not assumed to align: for example, [participant
+group] values [value], whereas [organization] must also satisfy [policy, safety,
+cost, or privacy constraint].
+
+\begin{table}[tb]
+  \caption{Stakeholder analysis.}
+  \label{tab:stakeholders}
+  \begin{tabularx}{\columnwidth}{@{}l l X@{}}
     \toprule
-    Command &A Number & Comments\\
+    Stakeholder & Relationship & Interest, influence, and concern \\
     \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
+    Primary user & Direct use & [Goal; capability; risk if the system fails] \\
+    Secondary user & Indirect use & [Coordination need or downstream effect] \\
+    Gatekeeper & Access/control & [Permission, policy, resource, or ethical concern] \\
+    Domain expert & Knowledge source & [Practice knowledge and potential bias] \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
+\end{table}
+
+\guidance{Use short, concrete vignettes: ``When \ldots, [role] \ldots because
+\ldots''. Mark statements as observation, participant account, document
+evidence, or team inference. Show why the problem is consequential for people,
+not just technically interesting.}
+
+\instructornote{Look for a credible problem-space account. The best work
+exposes tensions and uncertainty, then uses research to resolve them rather
+than defending an early solution.}
+
+\commonmistakes{Listing demographics instead of stakeholders' roles; treating
+a persona as data; saying ``users need an app''; confusing a desired feature
+with a human need; omitting organizational and accessibility constraints.}
+
+\subsection{Current Practice and Opportunity Areas}
+
+Describe a representative journey from trigger to outcome. For [persona role],
+the activity begins when [trigger]. They then [step], coordinate with [person or
+tool], and finish when [criterion]. Friction appears at [breakdown], where
+[consequence]. Do not convert every complaint into a feature request:
+distinguish a cause, an observed workaround, and a possible design opportunity.
+
+Three preliminary opportunity areas were [opportunity A], [opportunity B], and
+[opportunity C]. We carried these forward as questions to investigate, rather
+than commitments to implement. Contextual inquiry is useful when work is
+situated and tacit because it lets a researcher ask about decisions close to
+the activity \cite{beyer1998contextual}.
+
+\placeholderfigure{A stakeholder map or current-state journey. Use arrows to
+show relationships and label tensions, handoffs, and pain points.}{[Replace this
+caption.] Describe what the current practice artifact shows and why it matters.}
+
+\expectedlength{2--2.5 pages. Include a stakeholder table and one
+current-practice artifact.}
+
+\section{Data Gathering}
+
+\subsection{Method Rationale and Study Design}
+
+We selected [interviews / observations / survey / diary study / document
+analysis] because it can reveal [kind of evidence] in [context]. The method
+complements rather than replaces [second method]: [method A] captures
+[strength], while [method B] checks or broadens [strength]. Data-gathering
+choices should be driven by questions, practical constraints, and
+participants' wellbeing \cite{preece2023interaction}.
+
+Participants were recruited through [channel] using [inclusion criteria]. We
+sought variation in [experience, role, access need, or context], not statistical
+representativeness. State the final sample honestly: $n=[\ ]$, with
+[distribution]. Explain any attrition or access limitation and how it affects
+the claims that follow.
+
+We recorded initial assumptions in a risk register: [assumption 1], [assumption
+2], and [assumption 3]. Each assumption was marked as either evidence-backed,
+uncertain, or contradicted after fieldwork. This protects the project from
+designing around the team's own habits rather than participants' practices.
+
+\subsection{Procedure, Ethics, and Data Management}
+
+Each session lasted approximately [duration]. After consent, participants
+[procedure steps]. We gathered [audio, notes, artifacts, survey responses] and
+stored them in [approved location] with [pseudonyms/access controls].
+Participation was voluntary; participants could skip questions or withdraw
+[state applicable policy]. Avoid collecting identifiers that the analysis does
+not require.
+
+The protocol included open prompts such as ``Tell me about the last time you
+[activity]'' and follow-ups such as ``What happened next?'' Questions about
+actual episodes reduce speculative answers. Pilot [number] session(s) revealed
+[change], so we revised [prompt/order/material].
+
+\begin{table*}[tb]
+  \caption{Data-gathering protocol and evidence produced.}
+  \label{tab:protocol}
+  \begin{tabularx}{\textwidth}{@{}l X X@{}}
+    \toprule
+    Stage & Researcher action & Evidence and safeguard \\
+    \midrule
+    Recruitment & [Invite and screen] & [Eligibility; voluntary participation] \\
+    Opening & [Consent and context] & [Information sheet; permission to record] \\
+    Core activity & [Observe / interview / task] & [Notes, quotes, artifacts] \\
+    Closing & [Debrief and compensate] & [Withdrawal/contact information] \\
+    After session & [De-identify and store] & [Pseudonym; access control; retention] \\
+    \bottomrule
+  \end{tabularx}
 \end{table*}
 
-Always use midrule to separate table header rows from data rows, and
-use it only for this purpose. This enables assistive technologies to
-recognise table headers and support their users in navigating tables
-more easily.
+\placeholderfigure{A data-gathering timeline: recruitment, consent, session
+activities, debrief, and secure handling of data.}{[Replace this caption.]
+Describe the data-gathering timeline and why it matters.}
 
-\section{Math Equations}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of the three are
-discussed in the next sections.
+\guidance{Write the procedure chronologically. Separate what you planned from
+what happened. Include one or two actual question stems, but place the full
+guide in Appendix~\ref{app:materials}.}
 
-\subsection{Inline (In-text) Equations}
-A formula that appears in the running text is called an inline or
-in-text formula.  It is produced by the \textbf{math} environment,
-which can be invoked with the usual
-\texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
-the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
-and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
-examples of in-text equations in context. Notice how this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
+\instructornote{Grade the fit between research questions and method. Ethical
+care, sampling transparency, and a plausible procedure matter more than an
+unnecessarily large sample.}
 
-\subsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
+\expectedlength{2.5--3 pages. Include enough protocol detail for a peer to
+reproduce the study responsibly.}
+\commonmistakes{Claiming a convenience sample represents everyone; asking
+leading questions; describing consent as a signature only; failing to state
+what data were recorded; reporting a survey without its questions, scale,
+recruitment, or response count.}
 
-Again, in either environment, you can use any of the symbols and
-structures available in \LaTeX\@; this section will just give a couple
-of examples of display equations in context.  First, consider the
-equation, shown as an inline equation above:
-\begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
+\section{Data Analysis, Interpretation, and Presentation}
 
-\section{Figures}
+\subsection{Preparation and Analytic Approach}
 
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
-  \centering
- \includegraphics[width=\linewidth]{sample-franklin}
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
-\end{figure}
+We analyzed [data types] using [thematic analysis / content analysis /
+descriptive statistics / affinity diagramming]. First, [transcription, cleaning,
+or familiarization step] prepared the corpus. We then assigned concise codes to
+meaningful segments, compared codes across participants and contexts, and
+grouped related codes into candidate themes. Themes were reviewed against raw
+evidence and renamed to express an interpretive pattern, not a topic label
+\cite{braun2006thematic}.
 
-Your figures should contain a caption which describes the figure to
-the reader.
+For transparency, each finding below has an evidence trail: source material
+$\rightarrow$ code $\rightarrow$ theme $\rightarrow$ design implication.
+[Number] team member(s) coded the material. Explain how disagreements were
+discussed, how a codebook changed, and how negative cases were treated. Do not
+report inter-rater reliability unless your analysis design actually used it and
+you can explain it.
 
-Figure captions are placed {\itshape below} the figure.
+\subsection{Findings}
 
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
+\paragraph{Theme 1: [interpretive statement].} Participants described
+[pattern]. For example, P[ID] said, ``[short, anonymized quotation].'' This
+matters because [interpretation tied to context], not merely because the quote
+is vivid.
 
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
+\paragraph{Theme 2: [interpretive statement].} Evidence from
+[participant/artifact/observation] showed [pattern], including the
+counterexample [case]. This suggests [implication] only within [boundary].
 
-\subsection{The ``Teaser Figure''}
+\paragraph{Theme 3: [interpretive statement].} [Explain pattern, variation,
+and consequence.] Quantitative results, if used, should give denominator,
+measure, and uncertainty where appropriate: ``[x]/[n] respondents selected
+[response]'' is more informative than ``most users agreed.''
 
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
- \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
+\begin{table*}[tb]
+  \caption{Evidence-to-interpretation traceability matrix. Use anonymized identifiers.}
+  \label{tab:evidence}
+  \begin{tabularx}{\textwidth}{@{}X X X X@{}}
+    \toprule
+    Evidence source & Code / observation & Theme & Interpretation and bounded implication \\
+    \midrule
+    P01 interview, [time] & [Concise segment meaning] & [Interpretive theme] & [Why this pattern matters; do not write a feature yet] \\
+    Observation [site], [time] & [Action / workaround / breakdown] & [Theme] & [Contextual explanation and exception] \\
+    Artifact [ID] & [Documented constraint] & [Theme] & [Constraint on future requirement] \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
 
-\section{Citations and Bibliographies}
+\placeholderfigure{An affinity-map excerpt, coded journey, or chart. Show
+enough labels to make the transformation from data to theme understandable.}{[Replace
+this caption.] Describe the analysis artifact and why it matters.}
 
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
+\guidance{Use descriptive headings that make an argument (for example,
+``Coordination breaks down at handoffs''), not headings such as ``Interview
+question 3.'' Present evidence first, interpretation second, and implication
+third. Retain a de-identified audit trail in Appendix~\ref{app:audit}.}
 
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
+\instructornote{Strong analysis is traceable and selective. It explains why
+patterns matter to participants' activity, acknowledges variation, and avoids
+claiming universality from a small qualitative sample.}
 
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before the command
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
+\expectedlength{3--3.5 pages. This is often the intellectual center of the report.}
+\commonmistakes{Presenting quotes as self-explanatory; turning every code into a
+theme; erasing contradictory evidence; reporting percentages with a tiny or
+unstated denominator; mixing a result and proposed feature in the same sentence.}
 
+\section{Establishing Requirements}
 
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, a couple of articles in a proceedings (of a
-  conference, symposium, workshop for example) (paginated proceedings
-  article) \cite{Andler79, Hagerup1993}, a proceedings article with
-  all possible elements \cite{Smith10}, an example of an enumerated
-  proceedings article \cite{VanGundy07}, an informally published work
-  \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
-    AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
-  master's thesis: \cite{anisi03}, an online document / world wide web
-  resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
-  (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05}
-  and (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication \cite{rous08}, 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  presentation~\cite{Reiser2014}. An article under
-  review~\cite{Baggett2025}. A
-  couple of citations with DOIs:
-  \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-  Artifacts: \cite{R} and \cite{UMassCitations}.
+\subsection{From Findings to Requirements}
 
-\section{Acknowledgments}
+Requirements state what a system and its surrounding service must enable or
+respect; they should not prematurely prescribe a screen layout
+\cite{preece2023interaction}. We translated each supported finding into a
+requirement by naming the actor, condition, action or quality, and success
+criterion. Requirements were checked with [participants, stakeholders, expert,
+or literature] through [walkthrough, prioritization activity, or review].
 
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
+Functional requirements describe supported actions. Data requirements identify
+the information needed, its source, ownership, sensitivity, and lifecycle.
+Non-functional requirements express qualities such as accessibility, privacy,
+reliability, learnability, and performance. Organizational requirements
+describe policy, staffing, integration, or governance conditions. The four
+categories can interact: an apparently simple reminder feature may create data,
+consent, and notification constraints.
 
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
+\placeholderfigure{A requirements traceability diagram linking findings,
+requirement IDs, and later conceptual-design elements.}{[Replace this caption.]
+Describe the traceability diagram and why it matters.}
 
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
+\subsection{Prioritization and Acceptance Criteria}
 
-\section{Appendices}
+We prioritized requirements using [MoSCoW / value-risk matrix / stakeholder
+workshop]. A ``Must'' item is essential for the defined release or study
+scenario, not merely popular. Priority reflects evidence, consequence of
+absence, implementation dependencies, and equity impacts. For each
+high-priority requirement, specify a testable acceptance criterion: ``Given
+[condition], [user] can [action] with [measure] without [harm].''
 
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
+Requirements remain provisional when evidence is thin. R[ID] is flagged for
+validation because [uncertainty]. This honest uncertainty is a useful design
+result: it directs the next study rather than disguising a decision as fact.
 
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
+\begin{table*}[tb]
+  \caption{Requirements catalogue. Add rows; retain stable IDs for traceability.}
+  \label{tab:requirements}
+  \begin{tabularx}{\textwidth}{@{}l l X X l@{}}
+    \toprule
+    ID & Type & Requirement & Evidence / rationale & Priority \\
+    \midrule
+    R1 & Functional & The system shall enable [role] to [action] when [condition]. & Theme T[ID]; P[ID] & Must \\
+    R2 & Data & The system shall collect/display [data] only for [purpose] and [retention rule]. & Constraint [ID] & Must \\
+    R3 & Quality & A [user with access need] shall complete [task] using [support/criterion]. & Observation [ID] & Should \\
+    R4 & Organizational & [Responsible role] shall be able to [govern/support action]. & Stakeholder review & Could \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
 
-\section{Multi-language papers}
+\guidance{Use active, testable wording: ``The system shall enable [role] to
+\ldots'' or ``[Role] needs to \ldots when \ldots''. Include the rationale and
+evidence ID beside every important requirement. Do not invent requirements
+merely to fill categories.}
 
-Papers may be written in languages other than English or include
-titles, subtitles, keywords and abstracts in different languages (as a
-rule, a paper in a language other than English should include an
-English title and an English abstract).  Use \verb|language=...| for
-every language used in the paper.  The last language indicated is the
-main language of the paper.  For example, a French paper with
-additional titles and abstracts in English and German may start with
-the following command
-\begin{verbatim}
-\documentclass[sigconf, language=english, language=german,
-               language=french]{acmart}
-\end{verbatim}
+\instructornote{Assess requirement quality, not quantity. A good table supports
+later design decisions, identifies trade-offs, and makes it possible to
+challenge an unsupported item.}
 
-The title, subtitle, keywords and abstract will be typeset in the main
-language of the paper.  The commands \verb|\translatedXXX|, \verb|XXX|
-begin title, subtitle and keywords, can be used to set these elements
-in the other languages.  The environment \verb|translatedabstract| is
-used to set the translation of the abstract.  These commands and
-environment have a mandatory first argument: the language of the
-second argument.  See \verb|sample-sigconf-i13n.tex| file for examples
-of their usage.
+\expectedlength{2.5--3 pages, including a requirements table with at least
+8--12 substantive entries.}
+\commonmistakes{Writing features instead of needs; using vague terms such as
+``easy'' without a criterion; prioritizing by personal preference; omitting
+privacy and accessibility; presenting all requirements as equally important;
+failing to trace requirements to evidence.}
 
-%%
-%% The acknowledgments section is defined using the "acks" environment
-%% (and NOT an unnumbered section). This ensures the proper
-%% identification of the section in the article metadata, and the
-%% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
+\section{Conceptual Design}
 
+\subsection{Design Vision and Conceptual Model}
 
-\section*{Ethics and Privacy Statement}
+The conceptual design proposes [system name], a [type of interactive
+product/service] that helps [role] [goal] in [context]. Its central design
+principle is [principle], derived from R[ID] and T[ID]. The system model is
+[object/action model]: users work with [key objects] and can [key actions].
+Define these terms in language participants recognize; a conceptual model
+should help users predict what actions are possible and what outcomes follow
+\cite{norman2013design}.
 
-This section of your ACM work should discuss the potential societal
-risks that might result from its publication; two to three sentences
-related to the findings of your study, or new advancements made
-possible by their developed methods. The privacy and ethics statement
-should clearly address the broader impacts of their work as it relates
-to the authors' interpretation of privacy, fairness, safety, human
-rights, data sovereignty, or future misuse and any benefit/risk
-trade-off resulting from this research. We acknowledge that some
-papers may have minimal societal risks beyond those considered by
-institutional review boards, and the dimensions considered by any
-review of the user study design or dataset licenses could be provided
-in this statement.
+The proposed interaction is [direct manipulation / conversation / form fill-in
+/ notification / embodied interaction / hybrid]. Explain why this style fits
+the activity, environment, devices, attention demands, and access needs. State
+deliberate exclusions, such as ``The system does not make [high-stakes
+decision]; it supports [human role] with [information or coordination].''
 
-%%
-%% The next two lines define the bibliography style to be used, and
-%% the bibliography file.
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-base}
+\placeholderfigure{A conceptual-model diagram or task flow. Use named objects,
+actions, feedback, and exception paths; annotate with R1--R[n].}{[Replace this
+caption.] Describe the conceptual model and why it matters.}
 
+\subsection{Scenario and Task Flow}
 
-%%
-%% If your work has an appendix, this is the place to put it.
+\paragraph{Scenario: [name].} [Persona/role] begins when [trigger]. They see
+[information] and choose [action]. The system then [response], making [status,
+consequence, or uncertainty] visible. If [exception], the system [recovery or
+escalation]. The scenario ends when [success criterion]. Annotate each step with
+the requirement(s) it serves.
+
+\subsection{Design Alternatives and Trade-Offs}
+
+We considered [alternative A] and [alternative B]. Alternative A was rejected
+or deferred because [evidence-based trade-off]; alternative B was retained
+because [reason]. Discuss effects on workload, privacy, accessibility, control,
+error recovery, and organizational practice. Participatory design is especially
+valuable when those affected can shape consequential design choices
+\cite{muller1993participatory}.
+
+\begin{table*}[tb]
+  \caption{Requirement-to-conceptual-design mapping.}
+  \label{tab:designmapping}
+  \begin{tabularx}{\textwidth}{@{}l X X@{}}
+    \toprule
+    Requirement & Conceptual-design response & How it will be checked \\
+    \midrule
+    R1 & [Object, action, and feedback] & [Scenario / usability task] \\
+    R2 & [Data boundary or consent mechanism] & [Policy review / walkthrough] \\
+    R3 & [Accessibility or resilience support] & [Inclusive test condition] \\
+    R4 & [Administration or service process] & [Stakeholder review] \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
+
+\guidance{Describe the interaction before drawing it. Name objects consistently
+across scenario, diagram, and prototype. A conceptual design may use
+low-fidelity sketches, but each sketch must answer a requirement or reveal a
+decision.}
+
+\instructornote{Look for a design that is intelligible before visual polish.
+Strong submissions show traceability, explicit trade-offs, and appropriate
+limits on what the technology decides.}
+
+\expectedlength{3--3.5 pages. Include a model/flow and a mapping from
+requirements to design.}
+\commonmistakes{Jumping directly to annotated screens; calling a feature list a
+conceptual model; ignoring exceptions; treating automation as neutral; using a
+persona without linking it to study evidence; failing to explain why an
+interaction style fits the context.}
+
+\section{Evaluation Plan}
+
+\subsection{Evaluation Questions and Methods}
+
+The next iteration will evaluate whether the conceptual design supports the
+priority requirements, rather than whether participants simply like it.
+Evaluation questions are: (1) Can [role] understand the model and complete
+[task]? (2) Does [feature/flow] create confusion, workload, exclusion, or
+privacy concern? (3) Does the design fit [organizational/workflow constraint]?
+A moderated think-aloud walkthrough with [target participants] will test
+comprehension and task flow; a stakeholder review will test operational
+feasibility.
+
+The prototype will be [paper / clickable low-fidelity / service enactment],
+intentionally matched to the questions. A paper prototype can test sequence,
+labels, and feedback but cannot establish real-world reliability. State what
+the prototype cannot validly evaluate.
+
+\begin{table*}[tb]
+  \caption{Evaluation plan tied to requirements.}
+  \label{tab:evaluation}
+  \begin{tabularx}{\textwidth}{@{}X X X@{}}
+    \toprule
+    Task / requirement ID & Method and evidence & Decision rule \\
+    \midrule
+    {[Task], R1} & [Think-aloud; completion, errors, quotation] & [Revise task if \ldots] \\
+    {[Task], R2} & [Walkthrough; data-flow understanding] & [Escalate if \ldots] \\
+    {[Task], R3} & [Inclusive session; barrier observed] & [Revise if \ldots] \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
+
+\placeholderfigure{An evaluation journey showing participant tasks,
+observation points, measures, and revision decisions.}{[Replace this caption.]
+Describe the evaluation journey and why it matters.}
+
+\subsection{Success, Risk, and Iteration}
+
+Success criteria derive from Table~\ref{tab:requirements}. For example,
+[x]/[n] participants should [task outcome], and no participant should encounter
+an unaddressed [severity] breakdown related to R[ID]. Qualitative observations
+will be coded for misunderstandings, workarounds, breakdowns, and unanticipated
+value. Findings will lead to [revision rule], while high-risk concerns such as
+[privacy/safety/equity concern] pause implementation until reviewed.
+
+\guidance{For each task, specify the starting condition, prompt, expected
+outcome, evidence collected, and decision triggered by a failure. Avoid a
+generic ``we will conduct usability testing'' sentence.}
+
+\instructornote{Reward a realistic, requirement-driven evaluation plan. Its
+purpose is to reduce uncertainty and guide revision, not to certify a design as
+finished.}
+
+\expectedlength{1.5--2 pages. This is a planned study: use future tense and
+avoid inventing results.}
+\commonmistakes{Using satisfaction as the only outcome; testing only happy
+paths; claiming a prototype tests what it cannot; writing success measures
+unrelated to requirements; overlooking participant risk or accessibility in
+the evaluation.}
+
+\section{Discussion and Conclusion}
+
+\subsection{What the Process Established}
+
+This project established that [main supported finding] shapes the design of
+[system] because [reason]. The resulting requirements prioritize [two or three
+priorities], and the conceptual design responds through [named design moves].
+The value of the work lies in the chain from situated evidence to a design that
+can be evaluated, rather than in claiming that one small study has discovered
+universal user needs.
+
+\begin{table}[tb]
+  \caption{Bounded claims and next steps.}
+  \label{tab:claims}
+  \begin{tabularx}{\columnwidth}{@{}X X X@{}}
+    \toprule
+    Supported claim & Boundary / limitation & Next evidence or decision \\
+    \midrule
+    {[Claim grounded in T/R IDs]} & [Population, setting, or method boundary] & [Validation or design action] \\
+    {[Claim grounded in T/R IDs]} & [Uncertainty or negative case] & [Stakeholder decision] \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Limitations and Next Steps}
+
+The study is limited by [sample, setting, duration, access, method, or
+researcher-position limitation]. Consequently, findings should be interpreted
+as [bounded claim]. The next iteration should [specific evidence-gathering or
+evaluation action], particularly to examine [uncertain requirement or
+underserved stakeholder]. Reflect on how the team's position, access, and
+assumptions may have influenced what participants shared and how evidence was
+interpreted.
+
+\placeholderfigure{A concise roadmap from the completed study to the next
+validation, prototype iteration, and stakeholder decision.}{[Replace this
+caption.] Describe the roadmap and why it matters.}
+
+\subsection{Conclusion}
+
+Conclude in one paragraph by restating the problem, evidence-based contribution,
+and immediate next design decision. Do not introduce new claims here. The final
+sentence should make clear what a future designer or researcher can do
+differently because of this report.
+
+\guidance{Use this section to make a bounded argument. Name both the
+contribution and its limits. A candid limitation increases credibility when it
+is connected to a concrete next step.}
+
+\instructornote{The conclusion should demonstrate reflective HCI practice:
+evidence, consequence, uncertainty, and a thoughtful path for iteration.}
+
+\expectedlength{1--1.5 pages.}
+\commonmistakes{Repeating the abstract word-for-word; claiming proof from a
+small study; hiding limitations; proposing a new feature in the conclusion;
+ending with a generic statement that technology will improve life.}
+
+\begin{thebibliography}{5}
+
+\bibitem{beyer1998contextual}
+Hugh Beyer and Karen Holtzblatt. 1998.
+\newblock \emph{Contextual Design: Defining Customer-Centered Systems}.
+\newblock Morgan Kaufmann Publishers, San Francisco, CA.
+
+\bibitem{braun2006thematic}
+Virginia Braun and Victoria Clarke. 2006.
+\newblock Using thematic analysis in psychology.
+\newblock \emph{Qualitative Research in Psychology} 3, 2 (2006), 77--101.
+
+\bibitem{muller1993participatory}
+Michael J. Muller. 1993.
+\newblock Participatory design: The third space in HCI.
+\newblock In \emph{The Human--Computer Interaction Handbook}. 1051--1068.
+
+\bibitem{norman2013design}
+Donald A. Norman. 2013.
+\newblock \emph{The Design of Everyday Things}, revised and expanded ed.
+\newblock MIT Press, Cambridge, MA.
+
+\bibitem{preece2023interaction}
+Jennifer Preece, Yvonne Rogers, and Helen Sharp. 2023.
+\newblock \emph{Interaction Design: Beyond Human--Computer Interaction}, 6th ed.
+\newblock John Wiley \& Sons.
+
+\end{thebibliography}
+
 \appendix
 
-\section{Research Methods}
+\section{Study Materials}
+\label{app:materials}
 
-\subsection{Part One}
+\subsection{Participant Information and Consent Checklist}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
+Before beginning, provide: the study purpose; what participation involves;
+duration; recordings and data handling; foreseeable discomforts; benefits, if
+any; voluntary participation and withdrawal process; contact details; and the
+applicable approval statement. Do not include a participant's name, signature,
+contact information, or other identifying data in this submitted report.
 
-\subsection{Part Two}
+\subsection{Semi-Structured Interview Guide}
 
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
+\begin{enumerate}
+  \item Tell me about the last time you [performed the focal activity]. What
+  happened from beginning to end?
+  \item What parts were easy, difficult, slow, risky, or frustrating? Can you
+  show me an example?
+  \item Which people, tools, documents, and information did you use? What
+  happened when one was unavailable?
+  \item What workarounds have you developed, and what do they cost you or
+  others?
+  \item If a new system supported this activity, what would it need to respect
+  about your practice, privacy, access, or control?
+  \item Is there anything important we did not ask? Which of your answers should
+  we treat cautiously?
+\end{enumerate}
 
-\section{Online Resources}
+\paragraph{Interviewer reminders.} Ask neutral follow-ups (``Can you say
+more?''); do not promise a feature; do not pressure participants to disclose
+sensitive information; record analytic memos separately from factual notes.
 
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
+\instructornote{Check that the guide could plausibly generate the evidence used
+in the Findings section and that it treats participants with respect.}
+\expectedlength{1--2 pages, only as needed. This appendix supports the method;
+it does not replace the method description.}
+\commonmistakes{Including identifiable data; presenting leading questions;
+omitting a withdrawal/debrief procedure; pasting a raw transcript without
+purpose or permission.}
 
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
+\section{Analysis Audit Trail}
+\label{app:audit}
+
+\paragraph{Reflexive memo.} [Write 100--200 words on how the researcher's role,
+expectations, relationship to the setting, language, or analytic decisions may
+have shaped this account. State one action taken to examine that influence.]
+
+\begin{table}[tb]
+  \caption{Example de-identified analytic audit trail.}
+  \label{tab:audit}
+  \begin{tabularx}{\columnwidth}{@{}X X X@{}}
+    \toprule
+    Evidence / initial code & Analytic decision & Theme or requirement link \\
+    \midrule
+    {[De-identified excerpt or observation; concise code]} & [How interpretation changed] & [T/R ID] \\
+    {[Negative or divergent case; concise code]} & [Why it was retained] & [Boundary / revision] \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\instructornote{An audit trail makes reasoning inspectable. It is not a demand
+for mechanical objectivity; it shows disciplined interpretation.}
+\expectedlength{1--2 pages. Include representative evidence, not every note.}
+\commonmistakes{Treating codes as objective facts; exposing identifiable
+quotations; claiming triangulation merely because multiple data types exist;
+omitting a negative case or analytic uncertainty.}
 
 \end{document}
-\endinput
-%%
-%% End of file `sigconf.tex'.

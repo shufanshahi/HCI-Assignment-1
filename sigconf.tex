@@ -53,123 +53,267 @@ conceptual design, HCI education}
 
 \subsection{Problem, Users, and Setting}
 
-[Name the setting] currently requires [primary users] to [goal], but this is
-difficult because [observed or evidenced breakdown]. This project investigates
-how an interactive system could support [bounded outcome] without assuming
-that a new application is automatically the right answer. The unit of analysis
-is [individual / team / service encounter], and the study concerns [location,
-frequency, constraints, and stakeholders]. State what is known from preliminary
-observation, prior research, or institutional context; clearly label conjecture
-as conjecture.
+Personal reflection often begins with a small, time-sensitive thought: a person
+notices that a presentation made them nervous, that a conversation was
+uncomfortable, or that an ordinary event taught them something. Capturing that
+first thought may require only one sentence. Developing it into a useful journal
+entry, however, requires the writer to recall what happened, name a feeling,
+consider its cause, identify a lesson, and decide what to do next. The design
+problem addressed in this project is the gap between these two activities. A
+writer may want to reflect without having the time, energy, or immediate
+structure needed to turn a brief thought into a coherent account.
 
-The project is grounded in a human-centered process: discover the problem
-space, gather evidence about people and practice, interpret that evidence,
-negotiate requirements, and develop a conceptual design
-\cite{preece2023interaction}. This sequence is iterative, not a claim that
-requirements become permanently fixed after one study.
+ReflectBlocks is a proposed personal reflection tool for people who want to
+record and develop such thoughts while retaining control of their writing. Its
+primary users are not defined by age or occupation; they are defined by the
+activity under study: they voluntarily journal or want to reflect on meaningful
+events, but sometimes experience friction when beginning or structuring an
+entry. The focal unit of analysis is one individual reflection episode, from
+the moment an event prompts a thought to the point at which the writer chooses
+to save, export, or discard the material. The anticipated setting is private
+and self-directed use on a personal phone or computer, often shortly after an
+event but potentially later when the user has more time.
+
+The interaction begins with a short phrase such as ``I felt nervous during
+today's presentation.'' ReflectBlocks can then offer optional prompts---for
+example, what happened, how the user felt, why the event mattered, what they
+learned, and what they might do differently. These prompts are represented as
+independent blocks. The writer may answer, edit, remove, add, skip, or rearrange
+them, or bypass them entirely and use a blank editor. Only after an explicit
+request does the system organize the selected material into a draft journal
+entry. That draft remains editable, and source indicators can show which blocks
+contributed to each generated passage. Saving the blocks, saving or exporting
+the entry, deleting it permanently, and saving nothing are all intended to be
+visible user choices.
+
+This project treats those proposed capabilities as design hypotheses rather
+than established user requirements. In particular, the project description
+does not yet demonstrate that writers want generated prose, that the suggested
+questions match their reflection practices, or that source indicators provide
+meaningful transparency. A human-centered process must investigate those
+questions through evidence about people and practice before the concept is
+treated as a solution \cite{preece2023interaction}. The design therefore
+separates the underlying opportunity---supporting a transition from a fleeting
+thought to deliberate reflection---from the particular block-based interface
+currently proposed to address it.
 
 \begin{table}[tb]
-  \caption{Project scope. Replace all bracketed entries.}
+  \caption{Project scope for ReflectBlocks.}
   \label{tab:scope}
   \begin{tabularx}{\columnwidth}{@{}lX@{}}
     \toprule
     Element & Project decision \\
     \midrule
-    Primary users & [Who directly uses or is affected by the system?] \\
-    Stakeholders & [Who administers, supports, regulates, or is indirectly affected?] \\
-    Activity & [Observable task or practice under study] \\
-    Setting & [Physical, social, organizational, and technical context] \\
-    Boundary & [What is intentionally outside this assignment?] \\
+    Primary users & People who want to capture and develop personal reflections \\
+    Stakeholders & Writers, optional recipients of exported entries, system operators, AI/storage providers, and privacy or domain experts \\
+    Activity & Moving from a brief thought to a reviewed journal entry \\
+    Setting & Private, self-directed use on a personal phone or computer \\
+    Boundary & Reflection support, not therapy, diagnosis, crisis response, or autonomous interpretation of the user \\
     \bottomrule
   \end{tabularx}
 \end{table}
 
-\placeholderfigure{A context photograph, service-blueprint excerpt, or
-stakeholder map for [setting]. Remove identifying information.}{[Replace this
-caption.] Describe what the figure shows and why it matters.}
-
-\guidance{Write in the past tense for completed study work and present tense
-for stable context. Give one concrete example of the existing workflow.
-Replace every bracketed placeholder, and cite sources for contextual claims.}
-
-\instructornote{Assess scope discipline: a strong introduction identifies a
-feasible population and activity, distinguishes stakeholders, and makes a
-testable design opportunity visible.}
+\begin{figure}[tb]
+  \centering
+  \fbox{\begin{minipage}{0.88\columnwidth}
+    \centering\small
+    Meaningful event or experience\\
+    $\downarrow$\\
+    One-sentence thought\\
+    $\downarrow$\\
+    Optional reflection blocks \quad or \quad blank writing\\
+    $\downarrow$\\
+    User reviews, edits, reorders, or removes material\\
+    $\downarrow$\\
+    Explicit generation request\\
+    $\downarrow$\\
+    Editable entry with source links\\
+    $\downarrow$\\
+    Save blocks / save or export entry / permanently delete
+  \end{minipage}}
+  \caption{The bounded ReflectBlocks reflection episode. The user initiates
+  each transition and may leave the flow without generating or saving an entry.}
+  \Description{A vertical flow from a meaningful event through a short thought,
+  optional reflection, user review, explicit generation, editing, and a final
+  save, export, or deletion decision.}
+  \label{fig:context}
+\end{figure}
 
 \subsection{Research Questions and Contribution}
 
-The study asks: \textbf{RQ1:} How do [users] currently accomplish [goal]?
-\textbf{RQ2:} Which needs, constraints, and opportunities should shape a future
-design? \textbf{RQ3:} How can a conceptual design make the proposed interaction
-understandable and accountable? The contribution is a documented,
-evidence-traceable requirements set and concept for [system], not merely a
-polished interface.
+The study is guided by three questions:
 
-\expectedlength{1.5--2 pages, including the context figure and Table~\ref{tab:scope}.}
-\commonmistakes{Opening with a solution; treating all people as ``the user'';
-claiming needs without evidence; using research questions that can be answered
-only by opinions about the proposed interface.}
+\begin{itemize}
+  \item \textbf{RQ1:} How do people currently capture a brief reaction to an
+  event and develop it into a more considered personal reflection?
+  \item \textbf{RQ2:} What forms of optional structure, authorship control, and
+  privacy protection should shape a tool that supports this transition?
+  \item \textbf{RQ3:} How can a conceptual model make the relationship between
+  a writer's original material and system-organized prose understandable,
+  editable, and reversible?
+\end{itemize}
+
+The intended contribution is an evidence-traceable set of requirements and a
+conceptual design for ReflectBlocks. The concept combines progressive
+reflection prompts, a blank-writing alternative, explicit rather than automatic
+generation, editable output, provenance between source blocks and generated
+text, and granular retention controls. The contribution is not a claim that a
+block interface improves wellbeing or writing quality. At this stage, it is a
+bounded account of a design opportunity and a set of assumptions that the
+subsequent study must confirm, refine, or reject.
 
 \section{Discovering Requirements}
 
 \subsection{Stakeholders, Assumptions, and Problem Space}
 
 Requirements discovery identifies the people, activities, values, and
-constraints that define a design space \cite{preece2023interaction}. We began
-with a stakeholder inventory. Primary participants were [group]; secondary
-stakeholders included [group]; and gatekeepers or domain experts included
-[group]. Their interests were not assumed to align: for example, [participant
-group] values [value], whereas [organization] must also satisfy [policy, safety,
-cost, or privacy constraint].
+constraints that define a design space \cite{preece2023interaction}. For
+ReflectBlocks, the primary stakeholder is the writer whose experiences and
+language become the content of an entry. This person has the greatest stake in
+whether the system preserves meaning, protects sensitive material, and allows
+them to change their mind. A trusted friend, teacher, mentor, or other recipient
+becomes a secondary stakeholder only when the writer chooses to export and
+share an entry; private writing does not imply that another person is entitled
+to access it.
 
-\begin{table}[tb]
+Technical and organizational actors also influence the experience even when
+they never read an entry directly. ReflectBlocks developers determine the
+available controls and defaults. A storage provider may hold saved blocks or
+entries, and an AI provider may process text when generation is requested.
+These actors control infrastructure and policy, while the writer bears much of
+the consequence of unauthorized disclosure, unclear retention, or distorted
+output. Privacy and security specialists can examine the data lifecycle, and
+people with expertise in journaling, writing, or wellbeing can identify harmful
+assumptions in prompts. Such experts are advisers rather than substitutes for
+the people who will actually use the system.
+
+The initial concept rests on five assumptions. First, some prospective users
+can capture a short thought more readily than they can begin a complete journal
+entry. Second, prompts can support reflection when they are relevant and
+optional. Third, users want assistance with organization without surrendering
+authorship of the final text. Fourth, showing the source of generated passages
+can help users inspect and correct the output. Fifth, clear storage, processing,
+export, and deletion controls are necessary when entries contain personal
+information. None of these statements is yet a finding. Each is recorded as a
+provisional claim to be examined during data gathering rather than embedded
+silently as a design fact.
+
+\begin{table*}[tb]
   \caption{Stakeholder analysis.}
   \label{tab:stakeholders}
-  \begin{tabularx}{\columnwidth}{@{}l l X@{}}
+  \begin{tabularx}{\textwidth}{@{}l l X@{}}
     \toprule
     Stakeholder & Relationship & Interest, influence, and concern \\
     \midrule
-    Primary user & Direct use & [Goal; capability; risk if the system fails] \\
-    Secondary user & Indirect use & [Coordination need or downstream effect] \\
-    Gatekeeper & Access/control & [Permission, policy, resource, or ethical concern] \\
-    Domain expert & Knowledge source & [Practice knowledge and potential bias] \\
+    Writer & Direct use & Reflection, authorship, privacy, accessibility; bears the main risk of disclosure or misrepresentation \\
+    Trusted recipient & Optional, indirect use & Receives only material the writer deliberately exports; may interpret the entry outside its original context \\
+    Developer/operator & Design and governance & Sets defaults, implements controls, handles failures, and communicates data practices \\
+    AI/storage provider & Processing and custody & Influences output quality, security, retention, and possible secondary data use \\
+    Domain/privacy expert & Advisory knowledge & Reviews prompts, risks, and safeguards but must not be treated as the voice of users \\
     \bottomrule
   \end{tabularx}
-\end{table}
+\end{table*}
 
-\guidance{Use short, concrete vignettes: ``When \ldots, [role] \ldots because
-\ldots''. Mark statements as observation, participant account, document
-evidence, or team inference. Show why the problem is consequential for people,
-not just technically interesting.}
+These interests do not always align. A provider may prefer to retain data for
+reliability, analytics, or model improvement, while a writer may expect an
+unsaved or deleted thought to disappear. A system may favor smooth automation,
+while the writer may need an interruption that makes AI processing and its
+consequences visible. A generated entry may sound polished but introduce an
+interpretation the writer did not intend. ReflectBlocks therefore treats
+control as more than the presence of an edit button. The writer must be able to
+understand what will happen, initiate consequential actions, inspect the result,
+revise or reject it, and remove stored material. These principles follow the
+broader HCI goal of making the conceptual model and available actions
+understandable to the person using the system \cite{norman2013design}.
 
-\instructornote{Look for a credible problem-space account. The best work
-exposes tensions and uncertainty, then uses research to resolve them rather
-than defending an early solution.}
+The problem space is deliberately narrower than digital mental-health support.
+ReflectBlocks does not diagnose emotions, recommend treatment, evaluate whether
+a reaction is correct, or intervene in a crisis. It should not infer that every
+entry represents a stable psychological state. Prompts may help a writer examine
+an experience, but they cannot guarantee insight or benefit. This boundary is
+important because positioning a reflective writing tool as therapy would create
+different safety, expertise, and evaluation requirements than those supported
+by the present project.
 
-\commonmistakes{Listing demographics instead of stakeholders' roles; treating
-a persona as data; saying ``users need an app''; confusing a desired feature
-with a human need; omitting organizational and accessibility constraints.}
+\begin{figure}[tb]
+  \centering
+  \fbox{\begin{minipage}{0.88\columnwidth}
+    \centering\small
+    Domain and privacy experts\\
+    $\downarrow$ advice and review\\[0.25em]
+    AI provider $\longleftrightarrow$ \textbf{ReflectBlocks}
+    $\longleftrightarrow$ Storage provider\\
+    $\uparrow$ processing \hfill custody $\uparrow$\\[0.25em]
+    \textbf{Writer: authors and controls the material}\\
+    $\downarrow$ optional, deliberate export\\
+    Trusted recipient
+  \end{minipage}}
+  \caption{Initial stakeholder relationships. The writer is the central data
+  subject and decision maker; technical providers and advisers influence the
+  experience without gaining an automatic right to the journal content.}
+  \Description{A stakeholder map with the writer at the center, ReflectBlocks,
+  AI and storage providers around it, advisers above, and an optional trusted
+  recipient below.}
+  \label{fig:stakeholders}
+\end{figure}
 
 \subsection{Current Practice and Opportunity Areas}
 
-Describe a representative journey from trigger to outcome. For [persona role],
-the activity begins when [trigger]. They then [step], coordinate with [person or
-tool], and finish when [criterion]. Friction appears at [breakdown], where
-[consequence]. Do not convert every complaint into a feature request:
-distinguish a cause, an observed workaround, and a possible design opportunity.
+Because fieldwork has not yet been reported, the following journey is a
+provisional current-practice model, not an observed universal sequence. A
+prospective user experiences an event and decides that it is worth remembering.
+They may write a sentence in a notes application, open a paper or digital
+journal, use a fixed template, or postpone writing. If they continue, they must
+decide which details matter, find words for reactions that may still be unclear,
+and organize those fragments into an entry. Finally, they choose whether to
+keep the writing private, share it, or discard it.
 
-Three preliminary opportunity areas were [opportunity A], [opportunity B], and
-[opportunity C]. We carried these forward as questions to investigate, rather
-than commitments to implement. Contextual inquiry is useful when work is
-situated and tacit because it lets a researcher ask about decisions close to
-the activity \cite{beyer1998contextual}.
+This journey exposes several possible breakdowns for investigation. The
+motivation to capture the event may be brief, while composing a full entry
+takes sustained attention. A blank page provides freedom but little support for
+deciding what to explore. A fixed template provides structure but may ask
+irrelevant questions or impose an order that does not match the writer's
+experience. Postponing the task may reduce immediate effort but can also leave
+only a minimal note whose meaning is difficult for the writer to reconstruct
+later. These are reasoned possibilities derived from the proposed concept, not
+participant findings; interviews and observation must establish when, for whom,
+and with what consequences they actually occur. Contextual inquiry is relevant
+because it can examine decisions near the situated activity rather than asking
+people only to speculate about a finished interface \cite{beyer1998contextual}.
 
-\placeholderfigure{A stakeholder map or current-state journey. Use arrows to
-show relationships and label tensions, handoffs, and pain points.}{[Replace this
-caption.] Describe what the current practice artifact shows and why it matters.}
+Three preliminary opportunity areas follow from this model. The first is
+\emph{low-friction capture with progressive support}. A one-sentence starting
+point could preserve the immediacy of a thought, while optional blocks could
+help the writer expand it at their own pace. The key need is not necessarily a
+particular set of cards; it is the ability to move between minimal capture,
+guided reflection, and unstructured writing without losing work or being forced
+through every step.
 
-\expectedlength{2--2.5 pages. Include a stakeholder table and one
-current-practice artifact.}
+The second opportunity is \emph{assistance that preserves authorship}. Explicit
+generation, editable output, and links from generated prose back to source
+blocks could make organization inspectable rather than magical. The design
+must still determine whether writers understand these links, whether generated
+language changes the meaning or tone of their account, and whether a polished
+draft discourages substantive editing. A successful interaction would let the
+writer treat generation as a reversible drafting operation, not as an
+authoritative interpretation of their experience.
+
+The third opportunity is \emph{privacy as an interaction rather than a hidden
+policy}. Before submitting personal text for processing, a user should be able
+to learn what data will leave the device, why it is needed, where it will be
+stored, and how it can be deleted. Retention choices should distinguish original
+blocks from the generated entry and allow the user to save neither. These
+controls create design questions about comprehensible wording, safe defaults,
+confirmation of permanent deletion, and the behavior of backups or external AI
+services.
+
+Together, the three areas define the problem space carried into data gathering:
+supporting the transition from a fleeting thought to deeper reflection,
+maintaining the writer's authorship throughout system assistance, and making
+the lifecycle of sensitive text understandable and controllable. The next stage
+must test these opportunities against actual practices, including people who
+prefer blank writing, people who reject generated prose, and people for whom
+privacy concerns outweigh the value of automated organization.
 
 \section{Data Gathering}
 

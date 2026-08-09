@@ -666,23 +666,24 @@ writer's own words on request, consistent with the boundary already set in
 Table~\ref{tab:scope}.
 
 \begin{figure*}[t]
-  \centering
-  \includegraphics[width=0.92\textwidth]{figure2.png}
-  \caption{ReflectBlocks conceptual model: named objects (thought, block,
-  draft entry, source link), writer-controlled actions on each block (inspect,
-  edit, add, remove, rearrange, undo), the explicit per-block generation step,
-  and the accept, reject, edit, add, remove, or generate-nothing decision
-  available on every generated section before it can become part of the saved
-  entry. Save, export, and deletion remain separate, writer-initiated
-  outcomes, and a parallel blank-writing route bypasses blocks entirely.}
-  \Description{A detailed conceptual-model diagram showing the ReflectBlocks
-  writer at the center, five optional reflection blocks with per-block writer
-  controls (inspect, edit, add, remove, rearrange, undo), an on-request AI
-  generation step producing one generated section per block, a per-section
-  accept, reject, edit, add, remove, or generate-nothing decision, assembly
-  into an organized generated entry, a parallel blank-writing route, a privacy
-  lifecycle for saved data, and four deliberate save or export outcomes.}
-  \label{fig:designmodel}
+    \centering
+    \includegraphics[width=0.96\textwidth]{conceptual_design_reflect_blocks.pdf}
+    \caption{ReflectBlocks conceptual model. The writer moves from a quick
+    thought through optional reflection blocks, review and selection, explicit
+    generation, inspection and editing of the draft with source links, and a
+    final retention decision. The model also includes a blank-writing
+    alternative and a revision path, preserving writer control and
+    reversibility throughout the reflection process. Requirement IDs indicate
+    how each stage traces to the established requirements.}
+    \Description{A conceptual flow diagram for ReflectBlocks. The main flow
+    begins with quick capture of a thought, continues through optional
+    reflection blocks, review and selection, explicit draft generation,
+    inspection and editing using source links, and a final retention decision.
+    A parallel blank-writing route allows the writer to bypass generation, and
+    a feedback path allows the writer to return and revise blocks or change
+    selections. Exception paths describe recovery when generation is unwanted
+    or generated text needs revision.}
+    \label{fig:designmodel}
 \end{figure*}
 
 \subsection{Scenario and Task Flow}

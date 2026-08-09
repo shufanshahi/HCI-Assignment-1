@@ -622,43 +622,188 @@ settled.
 
 
 \section{Conceptual Design}
+\label{sec:design}
 
 \subsection{Design Vision and Conceptual Model}
 
-The conceptual design proposes [system name], a [type of interactive
-product/service] that helps [role] [goal] in [context]. Its central design
-principle is [principle], derived from R[ID] and T[ID]. The system model is
-[object/action model]: users work with [key objects] and can [key actions].
-Define these terms in language participants recognize; a conceptual model
-should help users predict what actions are possible and what outcomes follow
+The conceptual design proposes ReflectBlocks, a private reflective-writing app
+for a personal phone or computer that helps a writer move from a single
+fleeting thought to a reviewed, editable journal entry without forcing a
+choice between a blank page and a fixed template. Its central design
+principle, derived from R1, R4, R12, and Theme~3 (\S\ref{sec:findings}), is
+that structure and AI assistance stay optional, requested, and reversible: the
+writer decides when a block is used and when text is generated, and every
+generated sentence remains attributable to its source and editable rather than
+authoritative.
+
+The system model is an object/action model built on four named objects: a
+\textit{thought} (the one-line capture that opens an episode), a
+\textit{block} (an independent, optional prompt-and-answer pair such as ``What
+happened?''), a \textit{draft entry} (organized text produced only on
+request), and a \textit{source link} (the visible connection between a
+passage in the draft and the block it came from). A writer can capture a
+thought, answer, skip, edit a block's question, dismiss, add a custom block,
+or reorder a block (R1, R2, R13), switch to
+unstructured writing at any point (R6), request generation once blocks are
+ready (R4), inspect which block produced which sentence (R5), edit or remove
+any part of the result (R12), and independently choose what to save, export,
+or discard (R8, R14). Naming these four objects consistently lets a writer
+predict, before acting, what will happen: touching a block never sends data
+anywhere, and only the explicit generate action does (R7, R10)
 \cite{norman2013design}.
 
-The proposed interaction is [direct manipulation / conversation / form fill-in
-/ notification / embodied interaction / hybrid]. Explain why this style fits
-the activity, environment, devices, attention demands, and access needs. State
-deliberate exclusions, such as ``The system does not make [high-stakes
-decision]; it supports [human role] with [information or coordination].''
+The proposed interaction is a hybrid of form fill-in and direct manipulation,
+not a conversational agent. Blocks behave like a small set of independent
+cards a writer can tap, type into, remove, or drag into a new order; the draft
+entry behaves like an ordinary editable document, not a chat transcript. This
+fits participants who wanted tap-and-type actions rather than a new gesture or
+menu (R9). A conversational
+interface was considered and rejected for the primary flow (\S\ref{sec:altdesign}) because it
+would hide the block objects the design otherwise keeps visible. ReflectBlocks
+deliberately does not interpret why a writer feels a certain way, infer a
+psychological state, or decide what an entry means; it only reorganizes the
+writer's own words on request, consistent with the boundary already set in
+Table~\ref{tab:scope}.
 
-\placeholderfigure{A conceptual-model diagram or task flow. Use named objects,
-actions, feedback, and exception paths; annotate with R1--R[n].}{[Replace this
-caption.] Describe the conceptual model and why it matters.}
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.96\textwidth]{conceptual_design_reflect_blocks.pdf}
+    \caption{ReflectBlocks conceptual model. The writer moves from a quick
+    thought through optional reflection blocks, review and selection, explicit
+    generation, inspection and editing of the draft with source links, and a
+    final retention decision. The model also includes a blank-writing
+    alternative and a revision path, preserving writer control and
+    reversibility throughout the reflection process. Requirement IDs indicate
+    how each stage traces to the established requirements.}
+    \Description{A conceptual flow diagram for ReflectBlocks. The main flow
+    begins with quick capture of a thought, continues through optional
+    reflection blocks, review and selection, explicit draft generation,
+    inspection and editing using source links, and a final retention decision.
+    A parallel blank-writing route allows the writer to bypass generation, and
+    a feedback path allows the writer to return and revise blocks or change
+    selections. Exception paths describe recovery when generation is unwanted
+    or generated text needs revision.}
+    \label{fig:designmodel}
+\end{figure*}
 
 \subsection{Scenario and Task Flow}
 
-\paragraph{Scenario: [name].} [Persona/role] begins when [trigger]. They see
-[information] and choose [action]. The system then [response], making [status,
-consequence, or uncertainty] visible. If [exception], the system [recovery or
-escalation]. The scenario ends when [success criterion]. Annotate each step with
-the requirement(s) it serves.
+\paragraph{Scenario: P03's evening entry.} P03 has the kind of moment she
+described in her interview: a thought arrives sharp and specific while she is
+in the shower or on the bus, but by the time she reaches her laptop that
+evening it has already begun to fade (T1). She opens ReflectBlocks and
+captures one line before anything else loads, ``felt uneasy after this
+morning's conversation, don't want to lose that,'' in under five seconds
+without first choosing a prompt (R1). Only once that line is saved does the
+system surface three suggested blocks---``What happened?'', ``How did you
+feel?'', and ``Why did it affect you?''---and leave two lower-priority ones,
+``What did you learn?'' and ``What would you do differently?'', collapsed but
+visible, so that structure never competes with the moment of capture itself.
+She answers the first three and dismisses the last two with one tap each,
+because the event still feels unresolved (R2). When ready, she taps
+``Organize my entry,'' an action separate from filling in blocks, so nothing
+is generated automatically while she is still typing (R4). ReflectBlocks
+shows a short, plain-language notice that only her three answered blocks,
+not her past entries, will be sent for organizing, and asks her to confirm
+(R7, R10). The system returns a draft entry with each sentence visibly tagged
+to the block it came from (R5); she notices one generated sentence
+oversimplifies her feeling and edits it directly, so the edited sentence,
+not the original generated one, becomes part of the entry (R12). She ends
+the session by choosing to save only her original blocks, not the generated
+entry, because she is not yet ready to commit to the organized wording (R14);
+the choice is confirmed before anything is written to storage. Because
+ReflectBlocks is intended for private, self-directed use on a personal device
+that other household members may occasionally borrow or glance at
+(Table~\ref{tab:scope}; \S\ref{sec:discovering}), no entry content, generated
+or otherwise, appears in a notification or lock-screen preview regardless of
+whether P03 is currently signed in, and closing the app returns to a neutral
+home screen rather than the last open entry.
+
+\paragraph{Exception: an empty generation request.} If P03 dismisses every
+suggested block and taps ``Organize my entry'' with nothing answered beyond
+her original one-line thought, ReflectBlocks does not attempt to expand that
+line into a fabricated account. Generating prose from a single sentence would
+have no block to attribute it to, which would violate the source-link
+guarantee in R5 before the entry even exists. Instead the system explains, in
+the same plain language used elsewhere, that there is nothing yet to
+organize, and returns her to the block view rather than silently producing
+text she never wrote.
+
+\paragraph{Exception: an interrupted session.} If P03 is interrupted while
+answering a block---someone else needs the phone, or she is called
+away---anything already typed is kept locally without requiring a separate
+save action. Because no block content is transmitted anywhere until she
+explicitly requests generation (R7), an interruption before that point
+carries no disclosure risk beyond the device itself; she can resume, discard,
+or switch to blank writing when she returns, and nothing has left the app in
+the meantime.
 
 \subsection{Design Alternatives and Trade-Offs}
+\label{sec:altdesign}
 
-We considered [alternative A] and [alternative B]. Alternative A was rejected
-or deferred because [evidence-based trade-off]; alternative B was retained
-because [reason]. Discuss effects on workload, privacy, accessibility, control,
-error recovery, and organizational practice. Participatory design is especially
-valuable when those affected can shape consequential design choices
-\cite{muller1993participatory}.
+We considered a conversational assistant that would ask follow-up questions in
+a chat thread and progressively compose the entry turn by turn. This was
+rejected for the primary flow: it would make generation continuous rather than
+explicit, working against R4 and against Theme~3's finding that participants
+wanted to know precisely what the system changed; P08's flat refusal to use
+any generated text, preferring blank writing only, suggested that the dialogue
+framing itself, not only output quality, was a source of distrust. The block-and-request model was
+retained because it keeps composition visible as a sequence of discrete,
+inspectable writer actions rather than a single opaque exchange.
+
+We also considered generating the draft entry automatically as soon as every
+suggested block was filled, removing the separate ``organize'' action to save
+a tap. This was rejected because it would remove the moment at which the
+writer currently consents to sending data externally (R7, R10) and would
+contradict R6, under which blank-writing participants such as P08 must be able
+to complete and save an entry without generation ever being invoked. An
+explicit request adds one interaction step but preserves the consent boundary
+that Theme~3 and the stakeholder analysis (\S\ref{sec:discovering}) identified
+as a condition for trust, at some cost to writers such as P05 who wanted a
+faster, always-the-same-questions default (R3); we accommodate that case with
+a persistent personal default rather than automatic generation, so speed does
+not require giving up the consent step.
+
+Finally, we considered removing the blank-writing mode to simplify the
+interface around blocks, since blocks were the original project concept. This
+was rejected because Theme~3 and R6 both trace directly to a participant (P08)
+who would use no other mode, and because demoting blank writing to a hidden
+fallback would reproduce the exact asymmetry participants criticized.
+Participatory input from participants who rejected generated prose entirely
+was therefore treated as a design constraint, not a minority preference to be
+designed around \cite{muller1993participatory}. The remaining trade-off is
+organizational: supporting two entry modes and a provenance layer increases
+what the development team must build and test, against a single-mode design
+that would be simpler to ship but would not accommodate the writers this study
+evidenced.
+
+Beyond these three choices, several trade-offs cut across all of them and
+remain open questions for the evaluation plan rather than settled design
+decisions. The retained model asks more of a writer at each decision point
+(which blocks to keep, whether to generate, which of four save outcomes to
+choose) than a single fixed form would; this trades convenience for the
+control Theme~3 identified as necessary for trust, but has not been tested on
+a writer under time pressure or low motivation, where the added decisions
+could themselves reproduce the delayed-capture problem in Theme~1. R9 is the
+design's most direct attempt to keep that cost low across the full aged-45+
+sample it is evidenced from, including a participant such as P08, who was
+both the most skeptical of generation and the most likely to be discouraged
+by a busy interface; whether the guided/blank-mode choice is genuinely as
+reachable for a participant like him as it is for a more habitual app user
+remains untested rather than assumed here. R5's requirement that a writer be
+able to view which words came from their own blocks versus system-organized
+language is also more demanding for this study's bilingual participants than
+it would be for an English-only sample: since every interview was conducted
+in Bangla, any language smoothing the system performs when organizing Bangla
+or mixed-language answers falls under ``system-organized language'' and would
+need the same visible, distinguishable treatment as any other generated
+wording. Whether the current source-link mechanism achieves that specifically
+for language changes, as opposed to pure reorganization, was not tested
+separately and remains a question for the evaluation plan rather than a
+settled claim. Finally, the retained design has more states
+to fail in than a fixed form does, which is why the scenario above specifies
+explicit recovery behavior for an empty generation request and an interrupted
+writing session rather than leaving those cases undefined.
 
 \begin{table*}[tb]
   \caption{Requirement-to-conceptual-design mapping.}
@@ -667,29 +812,23 @@ valuable when those affected can shape consequential design choices
     \toprule
     Requirement & Conceptual-design response & How it will be checked \\
     \midrule
-    R1 & [Object, action, and feedback] & [Scenario / usability task] \\
-    R2 & [Data boundary or consent mechanism] & [Policy review / walkthrough] \\
-    R3 & [Accessibility or resilience support] & [Inclusive test condition] \\
-    R4 & [Administration or service process] & [Stakeholder review] \\
+    R1 & One-line thought capture is the first screen; no block or prompt selection precedes it. & Timed capture task in a think-aloud walkthrough \\
+    R2 & Each block carries a single dismiss action, not a settings toggle. & Walkthrough task: dismiss a block without leaving the entry screen \\
+    R3 & A persistent per-writer default (e.g., always show fixed blocks) is stored in account settings and applied on the next entry. & Two-session walkthrough checking the default persists \\
+    R4 & Filling blocks never triggers generation; ``Organize my entry'' is a separate, explicit action. & Walkthrough: confirm no draft appears before the action is taken \\
+    R5 & Every sentence in a draft entry carries a visible tag linking it to its originating block. & Comprehension task: writer identifies the source of a given sentence \\
+    R6 & A blank editor is reachable from the same entry-point screen as blocks, not nested in a menu. & Walkthrough: writer completes and saves an entry using only blank writing \\
+    R7 & A generation request bundles only the blocks the writer selected; other saved material is excluded by design, not by a filter. & Data-flow notice review; policy walkthrough with the team \\
+    R8 & Blocks and the generated entry are deletable independently, each behind a confirmation step. & Walkthrough: delete a generated entry while blocks remain \\
+    R9 & Only tap and type actions are required to capture and save a first thought; no gesture or hidden menu is needed. & Inclusive session with participants aged 45+ \\
+    R10 & A plain-language notice states what will be sent, to whom, and why, immediately before a generation request is confirmed. & Comprehension check during walkthrough \\
+    R11 & Prompt wording is queued for review by a privacy or domain expert before release. & Stakeholder review, not a writer-facing task \\
+    R12 & Every draft sentence is directly editable in place; saved or exported content reflects edits, not the original generated text. & Walkthrough: edit a generated sentence and confirm the saved copy matches \\
+    R13 & Block question text, custom blocks, and reordering are available before generation is requested. & Walkthrough task, flagged low-confidence pending validation (\S\ref{sec:requirements}) \\
+    R14 & Save, save-blocks-only, export, and save-nothing are four distinct, equally visible actions at the end of a session. & Walkthrough: writer selects each option in turn and confirms the resulting state \\
     \bottomrule
   \end{tabularx}
 \end{table*}
-
-\guidance{Describe the interaction before drawing it. Name objects consistently
-across scenario, diagram, and prototype. A conceptual design may use
-low-fidelity sketches, but each sketch must answer a requirement or reveal a
-decision.}
-
-\instructornote{Look for a design that is intelligible before visual polish.
-Strong submissions show traceability, explicit trade-offs, and appropriate
-limits on what the technology decides.}
-
-\expectedlength{3--3.5 pages. Include a model/flow and a mapping from
-requirements to design.}
-\commonmistakes{Jumping directly to annotated screens; calling a feature list a
-conceptual model; ignoring exceptions; treating automation as neutral; using a
-persona without linking it to study evidence; failing to explain why an
-interaction style fits the context.}
 
 \section{Evaluation Plan}
 \label{sec:evaluation}

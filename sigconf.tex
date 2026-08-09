@@ -1052,12 +1052,37 @@ for every writer.
 
 \subsection{What the Process Established}
 
-This project established that [main supported finding] shapes the design of
-[system] because [reason]. The resulting requirements prioritize [two or three
-priorities], and the conceptual design responds through [named design moves].
-The value of the work lies in the chain from situated evidence to a design that
-can be evaluated, rather than in claiming that one small study has discovered
-universal user needs.
+This project established that the gap between a fleeting thought and a
+composed journal entry is not primarily a writing-skill problem but a
+sequencing problem: writers lose the thought while structure, tone, and
+completeness are still being decided (Theme~1), and the requirements that
+followed (R1, R9) shape ReflectBlocks around capturing that thought before
+anything else is asked of the writer. Two further findings pulled in the
+same direction without collapsing into one requirement each. Theme~2 showed
+that optional structure is only sometimes wanted, so the design responds not
+with one prompt set but with a dismissable, per-writer-default block model
+(R2, R3). Theme~3 showed that writers who accept AI assistance still
+insist on knowing what it changed, and one writer (P08) will not accept
+generated prose under any framing; the conceptual design responds with
+explicit, on-request generation, visible source links, fully editable
+output, and a blank-writing mode that is a first-class alternative rather
+than a fallback (R4, R5, R6, R12). The data-lifecycle and privacy
+requirements (R7, R8, R10, R14) were not traced to a theme in the same
+direct sense, but to the stakeholder analysis and initial assumptions in
+Section~\ref{sec:discovering}; the conceptual design treats them as equally
+binding, since a writer who cannot predict what happens to their text after
+generation has no real authorship over it, regardless of how the editor
+behaves.
+
+The value of this work lies in the traceable chain from eight family and
+relative interviews, through three themes and a fourteen-item requirements
+catalogue, to a conceptual model and scenario that a future evaluation can
+directly test (Table~\ref{tab:requirements}, Table~\ref{tab:designmapping}).
+It is not a claim that this design will reduce the burden of reflective
+writing, that a block-based interface is preferable to a blank page for
+most writers, or that findings from eight Bangla-speaking relatives above
+age 45 describe reflective writers generally. Table~\ref{tab:claims}
+separates what the study supports from what remains open.
 
 \begin{table}[tb]
   \caption{Bounded claims and next steps.}
@@ -1066,8 +1091,22 @@ universal user needs.
     \toprule
     Supported claim & Boundary / limitation & Next evidence or decision \\
     \midrule
-    {[Claim grounded in T/R IDs]} & [Population, setting, or method boundary] & [Validation or design action] \\
-    {[Claim grounded in T/R IDs]} & [Uncertainty or negative case] & [Stakeholder decision] \\
+    Capture must precede structure: a one-line thought should be saveable
+    before any block or prompt is shown (T1; 6/8 participants; R1). &
+    Evidenced only in an aged-45+, Bangla-speaking family sample; untested
+    for younger or more digitally fluent writers. & Timed capture task with
+    a wider age and language range (Table~\ref{tab:evaluation}). \\
+    Source transparency and a genuine blank-writing mode are both required,
+    not optional polish (T3; P06, P08; R5, R6). & Rests on one negative
+    case (P08) against a majority who accepted generation; the boundary
+    between the two groups is not yet characterized. & Comprehension task
+    checking whether source links are noticed unprompted, not only present. \\
+    R3, R9, and R13 remain provisional (\S\ref{sec:requirements}): a
+    single counterexample, a single-demographic sample, and no direct
+    participant evidence, respectively. & Treating any of the three as
+    settled would let the team's own assumptions substitute for evidence. &
+    Priority validation targets in the evaluation plan
+    (\S\ref{sec:evaluation}) before further design investment. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -1075,38 +1114,88 @@ universal user needs.
 \subsection{Limitations and Next Steps}
 \label{sec:limitations}
 
-The study is limited by [sample, setting, duration, access, method, or
-researcher-position limitation]. Consequently, findings should be interpreted
-as [bounded claim]. The next iteration should [specific evidence-gathering or
-evaluation action], particularly to examine [uncertain requirement or
-underserved stakeholder]. Reflect on how the team's position, access, and
-assumptions may have influenced what participants shared and how evidence was
-interpreted.
+The study is limited first by sample and recruitment: all eight
+participants were family members or relatives of the research team, all
+above age 45, recruited in Bangladesh over a two-month window. This
+closeness may have made participants more willing to discuss private
+writing habits than strangers would be, but it may equally have made them
+less willing to voice sharp criticism of a concept proposed by a relative;
+we cannot separate these effects from the interview notes alone. The
+sample also cannot speak to younger writers, writers outside Bangladesh, or
+writers who have never attempted journaling, all of whom are outside the
+population these findings describe.
 
-\placeholderfigure{A concise roadmap from the completed study to the next
-validation, prototype iteration, and stakeholder decision.}{[Replace this
-caption.] Describe the roadmap and why it matters.}
+The study is limited second by method. Interviews and a card-reaction
+exercise reveal what participants say about their practice, not what they
+would actually do with a working prototype; the near-instant capture claim
+behind R1, for instance, was never timed. As noted in
+Section~\ref{sec:requirements}, requirements were checked against
+transcripts and the stakeholder table rather than through a separate
+stakeholder or expert workshop, so R11's review step and the organizational
+requirements more broadly rest on the research team's own judgment rather
+than a domain expert's. Findings should therefore be read as a bounded,
+evidence-traceable account of eight people's stated practice and reaction
+to a proposed concept, not as a validated design.
+
+The next iteration should prioritize the three requirements already flagged
+as provisional in Section~\ref{sec:requirements}: whether a persistent
+prompt default (R3) is common beyond one counterexample, whether the
+accessibility requirement (R9) generalizes past an aged-45+ sample, and
+whether block customization (R13) is wanted at all, since no participant
+raised it unprompted. The evaluation plan in Section~\ref{sec:evaluation}
+is designed to produce that evidence through walkthrough tasks rather than
+further interviews alone. The team's own position as relatives of the
+participants, and as the sole coders of the interview data, is itself a
+limitation of the analysis that produced Table~\ref{tab:evidence} and the
+three themes in Section~\ref{sec:findings}; the coding disagreement noted
+during analysis was resolved by the same two researchers who conducted the
+interviews, so an independent coder or reviewer is a concrete next step,
+not only a caveat.
+
+\begin{figure}[tb]
+  \centering
+  \fbox{\begin{minipage}{0.9\columnwidth}
+    \scriptsize
+    \begin{tabularx}{\columnwidth}{@{}l X@{}}
+      \textbf{Completed} & Discovery, 8 interviews, 3 themes, 14 requirements, and the ReflectBlocks conceptual model (Sections~\ref{sec:discovering}--\ref{sec:design}). \\
+      $\downarrow$ & \\
+      \textbf{Next} & Think-aloud walkthrough of the R1, R4, R7, R8, R12 Must requirements against a low-fidelity prototype (\S\ref{sec:evaluation}). \\
+      $\downarrow$ & \\
+      \textbf{Then} & Targeted validation of provisional R3, R9, and R13; domain/privacy expert review of prompt wording (R11). \\
+      $\downarrow$ & \\
+      \textbf{Decision} & Revise the requirements catalogue and design on the basis of what fails, before any build commitment beyond the prototype. \\
+    \end{tabularx}
+  \end{minipage}}
+  \caption{A roadmap from the completed study to the next validation step, a
+  targeted revalidation of the three provisional requirements, and the
+  stakeholder review this study did not yet obtain.}
+  \Description{A four-step roadmap: completed discovery and conceptual
+  design work, a planned think-aloud walkthrough of the Must requirements,
+  targeted validation of three provisional requirements plus an expert
+  review, and a revision decision before further build investment.}
+  \label{fig:roadmap}
+\end{figure}
 
 \subsection{Conclusion}
 
-Conclude in one paragraph by restating the problem, evidence-based contribution,
-and immediate next design decision. Do not introduce new claims here. The final
-sentence should make clear what a future designer or researcher can do
-differently because of this report.
+Writers in this study did not lack the ability to write; they lacked a way
+to begin before a fleeting reaction faded, and a way to accept help
+organizing that reaction without losing track of which words were theirs.
+ReflectBlocks responds to that specific gap with a fourteen-item,
+evidence-traced requirements catalogue and a conceptual design that keeps
+capture, structure, generation, and retention as separate, writer-initiated
+steps rather than one automated pipeline. The contribution is the traceable
+path from eight interviews to that design, not a demonstration that the
+design works: the requirements table marks which claims are well supported
+and which rest on a single participant or on the team's own assumptions,
+and the evaluation plan in Section~\ref{sec:evaluation} is built to test
+the Must requirements before any of the Should or Could items receive
+further design attention. A future designer picking up this project should
+treat the provisional requirements in Table~\ref{tab:claims} as the first
+thing to test, not the model in Figure~\ref{fig:designmodel} as a finished
+answer.
 
-\guidance{Use this section to make a bounded argument. Name both the
-contribution and its limits. A candid limitation increases credibility when it
-is connected to a concrete next step.}
-
-\instructornote{The conclusion should demonstrate reflective HCI practice:
-evidence, consequence, uncertainty, and a thoughtful path for iteration.}
-
-\expectedlength{1--1.5 pages.}
-\commonmistakes{Repeating the abstract word-for-word; claiming proof from a
-small study; hiding limitations; proposing a new feature in the conclusion;
-ending with a generic statement that technology will improve life.}
-
-\begin{thebibliography}{5}
+\begin{thebibliography}{9}
 
 \bibitem{beyer1998contextual}
 Hugh Beyer and Karen Holtzblatt. 1998.
@@ -1132,6 +1221,35 @@ Donald A. Norman. 2013.
 Jennifer Preece, Yvonne Rogers, and Helen Sharp. 2023.
 \newblock \emph{Interaction Design: Beyond Human--Computer Interaction}, 6th ed.
 \newblock John Wiley \& Sons.
+
+\bibitem{mcdonald2012thinkaloud}
+Sharon McDonald, Helen M. Edwards, and Tingting Zhao. 2012.
+\newblock Exploring think-alouds in usability testing: An international survey.
+\newblock \emph{IEEE Transactions on Professional Communication} 55, 1 (2012),
+2--19.
+\newblock https://doi.org/10.1109/TPC.2011.2182569
+
+\bibitem{rettig1994prototyping}
+Marc Rettig. 1994.
+\newblock Prototyping for tiny fingers.
+\newblock \emph{Communications of the ACM} 37, 4 (1994), 21--27.
+\newblock https://doi.org/10.1145/175276.175288
+
+\bibitem{amershi2019guidelines}
+Saleema Amershi, Dan Weld, Mihaela Vorvoreanu, Adam Fourney, Besmira Nushi,
+Penny Collisson, Jina Suh, Shamsi Iqbal, Paul N. Bennett, Kori Inkpen,
+Jaime Teevan, Ruth Kikin-Gil, and Eric Horvitz. 2019.
+\newblock Guidelines for human--AI interaction.
+\newblock In \emph{Proceedings of the 2019 CHI Conference on Human Factors in
+Computing Systems (CHI '19)}. ACM, Paper 3, 1--13.
+\newblock https://doi.org/10.1145/3290605.3300233
+
+\bibitem{schaub2015privacy}
+Florian Schaub, Rebecca Balebako, Adam L. Durity, and Lorrie Faith Cranor.
+2015.
+\newblock A design space for effective privacy notices.
+\newblock In \emph{Eleventh Symposium on Usable Privacy and Security
+(SOUPS 2015)}. USENIX Association, 1--17.
 
 \end{thebibliography}
 

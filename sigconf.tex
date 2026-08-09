@@ -836,61 +836,217 @@ writing session rather than leaving those cases undefined.
 
 \subsection{Evaluation Questions and Methods}
 
-The next iteration will evaluate whether the conceptual design supports the
-priority requirements, rather than whether participants simply like it.
-Evaluation questions are: (1) Can [role] understand the model and complete
-[task]? (2) Does [feature/flow] create confusion, workload, exclusion, or
-privacy concern? (3) Does the design fit [organizational/workflow constraint]?
-A moderated think-aloud walkthrough with [target participants] will test
-comprehension and task flow; a stakeholder review will test operational
-feasibility.
+The next iteration will evaluate whether people can understand and use the
+ReflectBlocks conceptual model well enough to satisfy its priority requirements.
+The aim will not be to ask whether participants simply like the interface.
+Instead, the evaluation will focus on whether writers can complete the main
+reflection flow, predict what the system will do, recover from unwanted choices,
+and understand when their text is processed or retained. This follows directly
+from the requirement-to-design mapping in Table~\ref{tab:designmapping}.
 
-The prototype will be [paper / clickable low-fidelity / service enactment],
-intentionally matched to the questions. A paper prototype can test sequence,
-labels, and feedback but cannot establish real-world reliability. State what
-the prototype cannot validly evaluate.
+Three questions will guide the evaluation. First, can writers capture a thought
+quickly and choose how much structure they want without being forced through
+prompts or AI generation? Second, can writers understand when generation occurs,
+which information is used, where generated wording came from, and how to change
+that wording? Third, can writers understand the save and deletion choices,
+including what information remains after each choice? The evaluation will also
+revisit R3, R9, and R13 because Section~\ref{sec:requirements} identified these
+requirements as provisional rather than settled.
+
+We will use a clickable low-fidelity prototype in a moderated think-aloud
+walkthrough. Think-aloud methods are widely used in usability evaluation because
+participants verbalize what they are noticing and thinking while performing a
+task; however, the evaluator's prompts can influence what participants say
+\cite{mcdonald2012thinkaloud}. The moderator will therefore give the task first
+and use neutral reminders such as ``Please keep talking'' instead of directing
+participants toward a particular control. A low-fidelity prototype is appropriate
+at this stage because the main questions concern interaction sequence, labels,
+feedback, and the visibility of important choices rather than implementation
+details \cite{rettig1994prototyping}.
+
+We plan to recruit eight people who currently journal, have journaled
+occasionally, or have previously tried and stopped. The earlier study consisted
+of family and relative participants above age 45, so the evaluation will
+deliberately include variation in age and experience with text-editing
+applications. This will help us examine R9 rather than assuming that the
+interaction needs observed in the original sample apply equally to other
+writers. Participants will not be required to describe a real sensitive event.
+Tasks will use a neutral fictional situation, such as feeling nervous after a
+presentation, and participants may invent all journal content.
+
+The walkthrough will use five user tasks. First, the participant will start from
+the ReflectBlocks entry screen and will be asked to record one short thought.
+We will measure the interaction time from the appearance of the entry screen to
+the saved thought, excluding device or application loading time, and record
+hesitation, errors, and requests for help (R1, R9).
+
+Second, the prototype will show several reflection blocks, including one prompt
+that is intentionally inappropriate for the scenario. The participant will be
+asked to continue reflecting in whatever way they prefer. We will observe
+whether they can dismiss the irrelevant block, ignore the remaining prompts,
+move to blank writing, or use the available preference and customization
+controls without assuming that any of these actions is required (R2, R3, R6,
+R13).
+
+Third, after several blocks contain sample responses, the participant will be
+asked to organize the material into a draft. Before they continue, the prototype
+will display the planned processing notice. We will ask the participant to
+explain, in their own words, whether generation has already occurred, which
+blocks will be processed, who will receive them, and why they are being sent
+(R4, R7, R10). Privacy-notice research shows that simply displaying a notice
+does not guarantee useful understanding, so the evaluation will measure what the
+participant actually understood from it \cite{schaub2015privacy}.
+
+Fourth, the prototype will show a prepared generated entry containing source
+links and one sentence that deliberately changes the tone of the original
+material. The participant will be asked to identify where that sentence came
+from and then correct, remove, or replace it. This task tests whether source
+transparency is understandable and whether generated language remains practically
+reversible (R5, R12). These questions are also consistent with established
+human--AI interaction guidance that emphasizes making AI behavior understandable
+and giving users ways to correct unwanted system output
+\cite{amershi2019guidelines}.
+
+Finally, the participant will be given several retention requests, such as
+`keep the original blocks but not the generated entry'' and `delete this block
+but keep the completed entry.'' After each action, the participant will be asked
+what they believe still exists. This task will test the mental model of
+independent saving, export, and deletion (R8, R14), including the confirmation
+shown before an irreversible deletion.
 
 \begin{table*}[tb]
-  \caption{Evaluation plan tied to requirements.}
-  \label{tab:evaluation}
-  \begin{tabularx}{\textwidth}{@{}X X X@{}}
-    \toprule
-    Task / requirement ID & Method and evidence & Decision rule \\
-    \midrule
-    {[Task], R1} & [Think-aloud; completion, errors, quotation] & [Revise task if \ldots] \\
-    {[Task], R2} & [Walkthrough; data-flow understanding] & [Escalate if \ldots] \\
-    {[Task], R3} & [Inclusive session; barrier observed] & [Revise if \ldots] \\
-    \bottomrule
-  \end{tabularx}
+\caption{Evaluation plan tied to ReflectBlocks requirements.}
+\label{tab:evaluation}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.20\textwidth} X X@{}}
+\toprule
+Task / requirement ID & Method and evidence & Decision rule \
+\midrule
+
+```
+Quick thought, R1, R9 &
+Timed think-aloud from the entry screen; completion time, hesitation,
+errors, and moderator help recorded. &
+Revise the capture entry point if fewer than 7 of 8 participants save the
+thought within five seconds of the screen appearing, or if any participant
+cannot find the basic capture action without help. \\
+
+Prompt choice, R2, R3, R6, R13 &
+Walkthrough containing an irrelevant prompt; observe dismissal, blank
+writing, preference setting, and optional customization. &
+Revise if a participant believes a prompt is mandatory or cannot dismiss it
+directly. R3 and R13 remain provisional unless at least two participants
+independently identify a concrete reason they would use those controls. \\
+
+Generation boundary, R4, R7, R10 &
+Prediction question before generation and comprehension questions after the
+processing notice. &
+Revise before further implementation if any participant believes generation
+happens automatically or cannot tell which material is selected for external
+processing. \\
+
+Source and editing, R5, R12 &
+Source-comparison and correction task using intentionally unsuitable
+generated wording; correct identification and successful edit recorded. &
+Revise the source indicators or editing flow if fewer than 7 of 8
+participants identify the source correctly and change or remove the
+unsuitable sentence without moderator instruction. \\
+
+Retention, R8, R14 &
+Save-and-delete walkthrough followed by questions about what remains after
+each choice. &
+Revise if fewer than 7 of 8 participants correctly predict the retained
+material, or if any participant has a critical misunderstanding about an
+irreversible deletion. \\
+
+Governance, R7, R8, R10, R11 &
+Separate data-flow and prompt-wording walkthrough with a privacy or domain
+reviewer. &
+Do not treat these requirements as satisfied while a data-flow conflict,
+unclear retention rule, or harmful or clinical-sounding prompt remains
+unresolved. \\
+
+\bottomrule
+```
+
+\end{tabularx}
 \end{table*}
 
-\placeholderfigure{An evaluation journey showing participant tasks,
-observation points, measures, and revision decisions.}{[Replace this caption.]
-Describe the evaluation journey and why it matters.}
+Figure~\ref{fig:evaluationjourney} summarizes the planned participant journey
+and shows where evidence will be collected.
+
+\begin{figure}[tb]
+\centering
+\fbox{\begin{minipage}{0.90\columnwidth}
+\small
+\centering
+\textbf{Consent and think-aloud practice}\
+$\downarrow$\
+\textbf{Quick-thought capture}\
+{\scriptsize time, hesitation, errors}\
+$\downarrow$\
+\textbf{Prompt and blank-writing task}\
+{\scriptsize choice, dismissal, optionality}\
+$\downarrow$\
+\textbf{Generation and privacy notice}\
+{\scriptsize prediction and data-flow understanding}\
+$\downarrow$\
+\textbf{Source inspection and editing}\
+{\scriptsize provenance and correction}\
+$\downarrow$\
+\textbf{Save and deletion task}\
+{\scriptsize retention prediction}\
+$\downarrow$\
+\textbf{Short debrief and requirement review}
+\end{minipage}}
+\caption{Planned ReflectBlocks evaluation journey. Each task produces evidence
+for specific requirements before a revision decision is made.}
+\Description{A vertical evaluation flow beginning with consent and think-aloud
+practice, followed by quick capture, prompt choice, generation and privacy
+understanding, source inspection and editing, retention decisions, and a
+final debrief.}
+\label{fig:evaluationjourney}
+\end{figure}
+
+The clickable prototype will intentionally use prepared text rather than sending
+participants' writing to a real AI service. It can therefore test the sequence
+of actions, labels, source indicators, editing controls, processing notice, and
+users' understanding of retention choices. It cannot establish the quality or
+latency of a real language model, whether a production backend actually sends
+only selected blocks, whether deletion is permanent across servers and backups,
+or whether stored data are secure. R7 and R8 will therefore require technical
+verification in addition to the user-facing walkthrough before they can be
+claimed as implemented.
 
 \subsection{Success, Risk, and Iteration}
 
-Success criteria derive from Table~\ref{tab:requirements}. For example,
-[x]/[n] participants should [task outcome], and no participant should encounter
-an unaddressed [severity] breakdown related to R[ID]. Qualitative observations
-will be coded for misunderstandings, workarounds, breakdowns, and unanticipated
-value. Findings will lead to [revision rule], while high-risk concerns such as
-[privacy/safety/equity concern] pause implementation until reviewed.
+Evaluation success will be based on the requirement-level decision rules in
+Table~\ref{tab:evaluation}, not on general satisfaction. For the main interaction
+tasks, we will look for successful completion without the moderator telling the
+participant which control to use. We will also record misunderstandings,
+workarounds, hesitation, and unexpected ways of using the design and link each
+observation back to the relevant requirement.
 
-\guidance{For each task, specify the starting condition, prompt, expected
-outcome, evidence collected, and decision triggered by a failure. Avoid a
-generic ``we will conduct usability testing'' sentence.}
+Privacy and irreversible data loss will be treated more strictly than ordinary
+navigation problems. A participant misunderstanding whether text is about to be
+sent externally, or misunderstanding what an irreversible deletion will remove,
+will be treated as a critical breakdown even if the participant eventually
+finishes the task. Such a breakdown will require revision of the relevant notice,
+label, sequence, or confirmation before that part of the design is carried
+forward.
 
-\instructornote{Reward a realistic, requirement-driven evaluation plan. Its
-purpose is to reduce uncertainty and guide revision, not to certify a design as
-finished.}
+R3 and R13 will be evaluated as open design questions rather than features that
+must be defended. If participants do not find a clear use for persistent prompt
+preferences or block customization, these controls may be simplified, deferred,
+or removed. Similarly, barriers that occur mainly among participants with less
+text-editing experience will trigger revision of R9 and the initial interaction
+rather than being dismissed as participant error.
 
-\expectedlength{1.5--2 pages. This is a planned study: use future tense and
-avoid inventing results.}
-\commonmistakes{Using satisfaction as the only outcome; testing only happy
-paths; claiming a prototype tests what it cannot; writing success measures
-unrelated to requirements; overlooking participant risk or accessibility in
-the evaluation.}
+After each revision, the affected task will be tested again before the design is
+treated as stable. The purpose of this evaluation is therefore to reduce the
+remaining uncertainty around ReflectBlocks and decide what should change next,
+not to claim that one low-fidelity study proves that the final system is usable
+for every writer.
 
 \section{Discussion and Conclusion}
 

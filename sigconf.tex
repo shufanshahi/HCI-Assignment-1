@@ -509,9 +509,9 @@ able to verify.
     \toprule
     Theme / concern & Requirements & Traced evidence \\
     \midrule
-    T1: thought fades before writing & R1, R9 & 6 of 8 participants (P01, P03, P04, P07) \\
+    T1: thought fades before writing & R1, R9 & 6/8 participants; P03 representative example \\
     T2: prompts help only sometimes & R2, R3 & P02; P05 as counterexample \\
-    T3: wants to know what changed & R4, R5, R6, R12 & 7 of 8 participants (P06); P08 wants blank writing only \\
+    T3: wants to know what changed & R4, R5, R6, R12 & 7/8 participants; P06 representative example; P08 preferred blank writing only \\
     Data lifecycle and privacy & R7, R8, R10, R14 & Study assumptions and stakeholder analysis \\
     Advisory oversight & R11 & Stakeholder analysis \\
     Concept only, not yet validated & R13 & Original project concept, no participant evidence \\
@@ -539,12 +539,16 @@ criterion:
   \item \textbf{R4.} Given a set of filled or partially filled blocks, no
   organized draft is produced until the writer makes a separate, explicit
   generation request, even after closing and reopening the app.
+  \item \textbf{R5.} Given a generated entry, a writer can identify which
+  words or passages came from their own blocks versus system-organized
+  language, without leaving the entry view.
   \item \textbf{R7.} Given a generation request, the AI provider receives
   only the blocks the writer selected for that request, never the writer's
   other saved blocks or past entries.
   \item \textbf{R8.} Given a saved block or a generated entry, a writer can
-  delete it independently of other saved material and receive confirmation
-  that the deletion is permanent.
+  request its deletion independently of other saved material, see a clear
+  description of what will be deleted, and confirm before the deletion is
+  carried out.
   \item \textbf{R12.} Given a freshly generated entry, a writer can change,
   delete, or add any sentence, and the edited version, not the original
   generated output, is what gets saved or exported.
@@ -554,9 +558,10 @@ Three requirements remain provisional. \textbf{R3} is flagged for validation
 because it rests on a single counterexample (P05) against the majority
 pattern in Theme~2, so we do not yet know how common a fixed-prompt
 preference is. \textbf{R9} is flagged because our entire sample was recruited
-from family and relatives above age 45; the accessibility need it describes
-may not generalize to younger or more technically experienced writers, and
-could equally understate needs we did not observe in this sample.
+from family and relatives above age 45; age alone does not establish that
+this group needs simpler interaction than other writers, and the same
+inclusive-design assumption could equally understate needs we did not
+observe in this sample.
 \textbf{R13} is the weakest-evidenced requirement in the catalogue: block
 customization (editing a block's question, adding a custom block, reordering
 blocks) appears in the original ReflectBlocks concept in Section~1, but no
@@ -575,16 +580,16 @@ settled.
     \toprule
     ID & Type & Requirement & Evidence / rationale & Priority \\
     \midrule
-    R1 & Functional & The system shall let a writer save a one-sentence thought within seconds of opening the app, without first choosing a prompt or block. & T1; P01, P03, P04, P07 (6/8) & Must \\
-    R2 & Functional & The system shall let a writer dismiss any single prompt block with one action, without opening a settings screen. & T2; P02 & Must \\
+    R1 & Functional & The system shall let a writer save a one-sentence thought within seconds of opening the app, without first choosing a prompt or block. & T1; 6/8 participants; P03 representative example & Must \\
+    R2 & Functional & The system shall let a writer dismiss any single prompt block with one action, without opening a settings screen. & T2; P02 & Should \\
     R3 & Functional & The system shall let a writer set a personal default prompt behavior (e.g., always show the same fixed prompts) that persists across sessions. & T2 (counterexample); P05 & Should \\
     R4 & Functional & The system shall generate an organized draft entry only after an explicit, separate request from the writer, never automatically once blocks are filled. & Assumption 3; T3; P08 & Must \\
-    R5 & Functional & The system shall let a writer view which words or passages in a generated entry came from their own blocks versus system-organized language. & T3; P06 (7/8) & Must \\
+    R5 & Functional & The system shall let a writer view which words or passages in a generated entry came from their own blocks versus system-organized language. & T3; 7/8 participants; P06 representative example & Must \\
     R6 & Functional & The system shall let a writer complete, save, and export an entry using blank writing alone, without ever invoking generation. & T3; P08 & Should \\
     R7 & Data & The system shall send an AI provider only the specific blocks the writer selects for a given generation request, not the writer's other saved blocks or entries. & Assumption 5; Table~\ref{tab:stakeholders} (AI provider) & Must \\
-    R8 & Data & The system shall let a writer permanently delete saved blocks and a generated entry independently of one another, with deletion irreversible once confirmed. & Assumption 5; Table~\ref{tab:stakeholders} (writer vs.\ provider retention) & Must \\
-    R9 & Quality & A writer with limited experience using text-editing apps shall be able to capture and save a first thought using only tap-and-type actions, without learning a new gesture or menu. & Participant sample (8/8 aged 45+) & Should \\
-    R10 & Data & Before any generation request is sent, the system shall show in plain language what data will leave the device, to whom, and why. & Opportunity area 3 (\S\ref{sec:discovering}); Assumption 5 & Should \\
+    R8 & Data & The system shall let a writer request deletion of saved blocks and a generated entry independently of one another, clearly state the scope of what will be deleted, and require confirmation before the deletion is carried out. & Assumption 5; Table~\ref{tab:stakeholders} (writer vs.\ provider retention) & Must \\
+    R9 & Quality & The initial thought-capture interaction shall use familiar tap-and-type actions and shall not require a new gesture or hidden menu. & Inclusive-design consideration; participant sample all above age 45; requires validation & Should \\
+    R10 & Data & Before any generation request is sent, the system shall explain in plain language which data is selected, whether it leaves the device, who processes it, why it is processed, and what storage or retention applies. & Opportunity area 3 (\S\ref{sec:discovering}); Assumption 5 & Should \\
     R11 & Organizational & A privacy or domain expert shall review prompt wording before release to flag clinical-sounding or otherwise harmful phrasing. & Table~\ref{tab:stakeholders} (domain/privacy expert) & Could \\
     R12 & Functional & The system shall keep every sentence of a generated entry editable, letting the writer change, remove, or add text after generation and before saving. & Assumption 3; T3; P06 & Must \\
     R13 & Functional & The system shall let a writer edit a block's question text, add a custom block, and reorder blocks before requesting generation. & Initial concept (\S1); not yet directly evidenced in interviews & Could \\

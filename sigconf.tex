@@ -469,32 +469,33 @@ option, not just a backup.
 
 \subsection{From Findings to Requirements}
 
-Requirements state what a system and its surrounding service must enable or
-respect; they should not prematurely prescribe a screen layout
-\cite{preece2023interaction}. We translated each of the three themes from
+A requirement says what the system and the service around it must allow or
+protect, not what a particular screen should look like
+\cite{preece2023interaction}. We turned each of the three themes from
 Section~\ref{sec:findings}, together with the stakeholder concerns and
-assumptions from Section~\ref{sec:discovering}, into requirements by naming
-the actor, the condition under which it applies, the action or quality
-required, and a success criterion. Because our sample was eight family and
-relative participants, all above age 45, we treated a requirement as
-supported only when at least two participants independently pointed to the
-same need, or when a single participant's account was corroborated by the
-card exercise or by a stakeholder concern already identified in
-Section~\ref{sec:discovering}. Requirements were then checked informally
-against the original interview notes and against the stakeholder table
-(Table~\ref{tab:stakeholders}) rather than through a separate participant
-workshop, which this study did not have time or budget to run; this is a
-limitation we return to in Section~\ref{sec:limitations}.
+assumptions from Section~\ref{sec:discovering}, into requirements. For each
+one, we wrote down who it applies to, when it applies, what the system has
+to do, and how we would know it worked. Our sample was small, just eight
+family and relative participants, all above age 45, so we set a simple bar
+for what counted as supported: at least two participants had to
+independently raise the same need, or one participant's account had to be
+backed up by the card exercise or by a stakeholder concern we had already
+identified in Section~\ref{sec:discovering}. We checked each requirement
+informally against the original interview notes and against the stakeholder
+table (Table~\ref{tab:stakeholders}); we did not run a separate participant
+workshop, since the study did not have the time or budget for one, and we
+come back to that limitation in Section~\ref{sec:limitations}.
 
-Functional requirements describe supported actions. Data requirements
-identify the information needed, its source, ownership, sensitivity, and
-lifecycle. Quality (non-functional) requirements express properties such as
-accessibility, privacy, reliability, and learnability. Organizational
-requirements describe policy, review, or governance conditions. The
-categories interact in this project: source-transparency (Theme~3) is at
-once a functional requirement (show provenance), a data requirement (which
-text is sent where), and a trust/privacy quality that the writer must be
-able to verify.
+We grouped the requirements into four types. Functional requirements
+describe what the system lets a writer do. Data requirements cover what
+information is needed, where it comes from, who owns it, how sensitive it
+is, and what happens to it over time. Quality (non-functional) requirements
+cover properties like accessibility, privacy, reliability, and how easy the
+system is to learn. Organizational requirements describe policy, review, or
+governance steps. These categories are not always separate in practice:
+source transparency (Theme~3) is at once a functional requirement (show
+where the text came from), a data requirement (which text goes where), and a
+trust/privacy quality the writer needs to be able to check for themselves.
 
 \begin{table*}[tb]
   \centering
@@ -521,17 +522,19 @@ able to verify.
 
 \subsection{Prioritization and Acceptance Criteria}
 
-We prioritized requirements using MoSCoW, applied by the two researchers
-together rather than by a separate stakeholder workshop. A requirement was
-marked \textit{Must} when at least half of participants described the same
-breakdown or when omitting it would let the system act on a writer's private
-text without their knowledge (e.g., sending data or generating text without
-consent). \textit{Should} items address a real but less universal need or a
-quality concern raised by only one or two participants. \textit{Could} items
-depend on later access to expert review that this study did not yet obtain.
+We prioritized the requirements using MoSCoW. The two of us did this
+together, since we had no separate stakeholder workshop to run it through
+instead. We marked a requirement \textit{Must} when at least half of
+participants described the same breakdown, or when leaving it out would let
+the system act on a writer's private text without their knowledge (for
+example, sending data or generating text without consent). We marked
+something \textit{Should} when it addressed a real need that was less
+universal, or a quality concern only one or two participants raised.
+\textit{Could} items are ones that depend on expert review we have not been
+able to get yet.
 
-For each \textit{Must} requirement we specify a testable acceptance
-criterion:
+For each \textit{Must} requirement, here is a criterion we could actually
+test it against:
 \begin{itemize}
   \item \textbf{R1.} Given a new one-sentence thought, a writer can save it
   to the app in under 5 seconds, without first selecting a prompt, block, or
@@ -554,23 +557,22 @@ criterion:
   generated output, is what gets saved or exported.
 \end{itemize}
 
-Three requirements remain provisional. \textbf{R3} is flagged for validation
-because it rests on a single counterexample (P05) against the majority
-pattern in Theme~2, so we do not yet know how common a fixed-prompt
-preference is. \textbf{R9} is flagged because our entire sample was recruited
-from family and relatives above age 45; age alone does not establish that
-this group needs simpler interaction than other writers, and the same
-inclusive-design assumption could equally understate needs we did not
-observe in this sample.
-\textbf{R13} is the weakest-evidenced requirement in the catalogue: block
-customization (editing a block's question, adding a custom block, reordering
-blocks) appears in the original ReflectBlocks concept in Section~1, but no
-participant raised it unprompted, and our interview guide and card exercise
-did not ask about it directly. We kept it as a low-priority, explicitly
-unvalidated entry rather than dropping it, so the gap is visible instead of
-silently resolved. All three are carried forward as open questions for the
-evaluation plan in Section~\ref{sec:evaluation} rather than treated as
-settled.
+Three requirements are still provisional, and we want to be upfront about
+why. \textbf{R3} needs more validation: it rests on a single counterexample
+(P05) set against the majority pattern in Theme~2, so we do not yet know how
+common a fixed-prompt preference actually is. \textbf{R9} is flagged because
+our whole sample was recruited from family and relatives above age 45; being
+older does not by itself mean someone needs a simpler interaction, and the
+same inclusive-design assumption could just as easily understate needs we
+did not observe in this sample. \textbf{R13} has the weakest evidence in the
+whole catalogue: block customization (editing a block's question, adding a
+custom block, reordering blocks) comes from the original ReflectBlocks
+concept in Section~1, but no participant brought it up on their own, and our
+interview guide and card exercise never asked about it directly. We kept it
+in the catalogue anyway, as a low-priority, explicitly unvalidated entry,
+rather than quietly dropping it, so the gap stays visible instead of getting
+hidden. All three move forward as open questions for the evaluation plan in
+Section~\ref{sec:evaluation}, not as settled requirements.
 
 \begin{table*}[tb]
   \caption{Requirements catalogue for ReflectBlocks.}

@@ -1,6 +1,8 @@
 \documentclass[sigconf,nonacm]{acmart}
 \usepackage{tabularx}
 \usepackage{placeins}
+\newcolumntype{Y}{>{\raggedright\arraybackslash\hsize=.55\hsize}X}
+\newcolumntype{Z}{>{\raggedright\arraybackslash\hsize=1.45\hsize}X}
 \emergencystretch=1em
 
 % Undergraduate CHI-style assignment template adapted from main.md.
@@ -371,31 +373,28 @@ specific time instead.
   \end{tabularx}
 \end{table*}
 
-Figure~\ref{fig:gatheringtimeline} summarizes the same procedure as a
+Table~\ref{tab:gatheringtimeline} summarizes the same procedure as a
 two-month sequence, making clear when evidence was collected and when it was
 prepared for analysis.
 
-\begin{figure}[tb]
+\begin{table}[tb]
   \centering
-  \fbox{\begin{minipage}{0.9\columnwidth}
-    \scriptsize
-    \begin{tabularx}{\columnwidth}{@{}l X@{}}
-      \textbf{Weeks 1--2} & Finalized assumptions, pilot prompt, consent checklist, and paper cards. \\
-      $\downarrow$ & \\
-      \textbf{Weeks 3--4} & Invited family and older-relative participants; arranged home visits. \\
-      $\downarrow$ & \\
-      \textbf{Weeks 5--6} & Ran eight 20-minute interviews; one skipped the card exercise. \\
-      $\downarrow$ & \\
-      \textbf{Weeks 7--8} & Organized and pseudonymized session notes as P01--P08, coded the material, and checked emerging themes. \\
-    \end{tabularx}
-  \end{minipage}}
+  \small
   \caption{Data-gathering timeline. The sequence shows how preparation,
   recruitment, home interviews, and analysis preparation were
   organized across the study period.}
-  \Description{A multi-step timeline from preparation, recruitment, interviews to
-  note organization and coding}
-  \label{fig:gatheringtimeline}
-\end{figure}
+  \label{tab:gatheringtimeline}
+  \begin{tabularx}{\columnwidth}{@{}l X@{}}
+    \toprule
+    Weeks & Activity \\
+    \midrule
+    1--2 & Finalized assumptions, pilot prompt, consent checklist, and paper cards. \\
+    3--4 & Invited family and older-relative participants; arranged home visits. \\
+    5--6 & Ran eight 20-minute interviews; one skipped the card exercise. \\
+    7--8 & Organized and pseudonymized session notes as P01--P08, coded the material, and checked emerging themes. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 
 \section{Data Analysis, Interpretation, and Presentation}
 
@@ -416,31 +415,7 @@ and checked back on anything unclear. When a participant said something that
 did not fit a theme, we kept it as an exception instead of ignoring it, and
 those exceptions are noted in the findings below.
 
-Figure~\ref{fig:affinity} gives a compact example of the affinity grouping
-used to move from raw evidence fragments to codes and themes.
 
-\begin{figure}[tb]
-  \centering
-  \fbox{\begin{minipage}{0.9\columnwidth}
-    \scriptsize
-    \begin{tabularx}{\columnwidth}{@{}X X@{}}
-      \textbf{Evidence fragments and codes} & \textbf{Theme} \\
-      \midrule
-      Thought is gone before writing; quick notes left unfinished. Codes:
-      delayed capture, entry feels like homework. & T1: People lose the thought before they start writing. \\
-      Prompts useful only in some moods; fixed-template counterexample. Codes:
-      prompt fatigue, prompt fit, routine preference. & T2: Prompts help, but only sometimes. \\
-      Requests to compare original and generated text; blank-writing refusal.
-      Codes: provenance, authorship control, AI avoidance. & T3: People want to know what the system changed. \\
-    \end{tabularx}
-  \end{minipage}}
-  \caption{Affinity-map excerpt showing how selected interview and card-exercise
-  evidence was grouped into codes and then into the three themes reported in
-  Section~\ref{sec:findings}.}
-  \Description{A three-column affinity-map excerpt linking evidence fragments
-  to codes and themes.}
-  \label{fig:affinity}
-\end{figure}
 
 \subsection{Findings}
 \label{sec:findings}
@@ -473,6 +448,8 @@ generated text is not a nice-to-have, and blank writing needs to stay a real
 option, not just a backup.
 
 \begin{table*}[tb]
+  \centering
+  \small
   \caption{Evidence-to-interpretation traceability matrix. Use anonymized identifiers.}
   \label{tab:evidence}
   \begin{tabularx}{\textwidth}{@{}X X X X@{}}
@@ -519,30 +496,28 @@ once a functional requirement (show provenance), a data requirement (which
 text is sent where), and a trust/privacy quality that the writer must be
 able to verify.
 
-\begin{figure*}[tb]
+\begin{table*}[tb]
   \centering
-  \fbox{\begin{minipage}{0.97\textwidth}
-    \small
-    \begin{tabularx}{\textwidth}{@{}l l X@{}}
-      \textbf{Theme / concern} & \textbf{Requirements} & \textbf{Traced evidence} \\
-      \midrule
-      T1: thought fades before writing & R1, R9 & 6 of 8 participants (P01, P03, P04, P07) \\
-      T2: prompts help only sometimes & R2, R3 & P02; P05 as counterexample \\
-      T3: wants to know what changed & R4, R5, R6, R12 & 7 of 8 participants (P06); P08 wants blank writing only \\
-      Data lifecycle and privacy & R7, R8, R10, R14 & Study assumptions and stakeholder analysis \\
-      Advisory oversight & R11 & Stakeholder analysis \\
-      Concept only, not yet validated & R13 & Original project concept, no participant evidence \\
-    \end{tabularx}
-  \end{minipage}}
+  \small
   \caption{Requirements traceability. Every requirement in
   Table~\ref{tab:requirements} traces back to a theme from
   Section~\ref{sec:findings} or a stakeholder concern from
   Section~\ref{sec:discovering}, and one row (R13) is marked as resting on
   the original concept alone.}
-  \Description{A table with three columns mapping each theme or concern to
-  its requirement IDs and supporting evidence.}
-  \label{fig:reqtrace}
-\end{figure*}
+  \label{tab:reqtrace}
+  \begin{tabularx}{\textwidth}{@{}X X X@{}}
+    \toprule
+    Theme / concern & Requirements & Traced evidence \\
+    \midrule
+    T1: thought fades before writing & R1, R9 & 6 of 8 participants (P01, P03, P04, P07) \\
+    T2: prompts help only sometimes & R2, R3 & P02; P05 as counterexample \\
+    T3: wants to know what changed & R4, R5, R6, R12 & 7 of 8 participants (P06); P08 wants blank writing only \\
+    Data lifecycle and privacy & R7, R8, R10, R14 & Study assumptions and stakeholder analysis \\
+    Advisory oversight & R11 & Stakeholder analysis \\
+    Concept only, not yet validated & R13 & Original project concept, no participant evidence \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}
 
 \subsection{Prioritization and Acceptance Criteria}
 
@@ -596,7 +571,7 @@ settled.
   \caption{Requirements catalogue for ReflectBlocks.}
   \label{tab:requirements}
   \small
-  \begin{tabularx}{\textwidth}{@{}l l X X l@{}}
+  \begin{tabularx}{\textwidth}{@{}l l Z Y l@{}}
     \toprule
     ID & Type & Requirement & Evidence / rationale & Priority \\
     \midrule
@@ -614,13 +589,9 @@ settled.
     R12 & Functional & The system shall keep every sentence of a generated entry editable, letting the writer change, remove, or add text after generation and before saving. & Assumption 3; T3; P06 & Must \\
     R13 & Functional & The system shall let a writer edit a block's question text, add a custom block, and reorder blocks before requesting generation. & Initial concept (\S1); not yet directly evidenced in interviews & Could \\
     R14 & Data & The system shall let a writer independently choose to save only the original blocks, save the complete generated entry, export the entry, or save nothing at all. & Assumption 5; Opportunity area 3 (\S\ref{sec:discovering}); Table~\ref{tab:stakeholders} (retention conflict) & Should \\
-    
     \bottomrule
   \end{tabularx}
 \end{table*}
-
-\FloatBarrier
-
 
 \section{Conceptual Design}
 \label{sec:design}
@@ -1081,10 +1052,12 @@ most writers, or that findings from eight Bangla-speaking relatives above
 age 45 describe reflective writers generally. Table~\ref{tab:claims}
 separates what the study supports from what remains open.
 
-\begin{table}[tb]
+\begin{table*}[tb]
+  \centering
+  \small
   \caption{Bounded claims and next steps.}
   \label{tab:claims}
-  \begin{tabularx}{\columnwidth}{@{}X X X@{}}
+  \begin{tabularx}{\textwidth}{@{}X X X@{}}
     \toprule
     Supported claim & Boundary / limitation & Next evidence or decision \\
     \midrule
@@ -1106,7 +1079,7 @@ separates what the study supports from what remains open.
     (\S\ref{sec:evaluation}) before further design investment. \\
     \bottomrule
   \end{tabularx}
-\end{table}
+\end{table*}
 
 \subsection{Limitations and Next Steps}
 \label{sec:limitations}
